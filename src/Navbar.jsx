@@ -1,12 +1,19 @@
-function Navbar()
-{
-    return(
-        <>
-        <h1>
-           Navber
-        </h1>
-        </>
-    )
-}
+import { Link } from "react-router-dom";
 
-export default Navbar ;
+const Navbar = () => {
+  return (
+    <>
+      <div className="row">
+        <nav>
+          <ul>
+            <li className="nav-item">
+              <Link className="nav-link active" to="/">Skill in Detail</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </>
+  );
+};
+
+export default Navbar;
