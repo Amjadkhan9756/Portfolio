@@ -242,10 +242,6 @@ function Home() {
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind" className="w-8 h-8" />
                     <span className="text-gray-300 font-medium">Tailwind CSS</span>
                   </div>
-                   <div className="flex items-center space-x-3">
-                    <img src="https://cdn.neowin.com/news/images/uploaded/2024/03/1709760302_typescript.jpg" alt="TypeScript" className="w-8 h-8" />
-                    <span className="text-gray-300 font-medium">TypeScript</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -305,8 +301,8 @@ function Home() {
                     <span className="text-gray-300 font-medium">Data Structures & Algorithms</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <span className="w-8 h-8 bg-indigo-500 rounded flex items-center justify-center text-white text-xs font-bold">OOPs</span>
-                    <span className="text-gray-300 font-medium">OOPs with java</span>
+                    <span className="w-8 h-8 bg-indigo-500 rounded flex items-center justify-center text-white text-xs font-bold">LC</span>
+                    <span className="text-gray-300 font-medium">Problem Solving</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" className="w-8 h-8" />
@@ -370,6 +366,175 @@ function Home() {
                       and following modern development workflows with version control and testing.
                     </p>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* About Me Section */}
+        <div className="mt-32 pb-20">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+                About Me
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full mb-6"></div>
+              <p className="text-gray-300 text-xl max-w-3xl mx-auto">
+                Passionate developer with a strong foundation in computer science and modern technologies
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              
+              {/* Left Side - Profile Info */}
+              <div className="relative group">
+                <div className="absolute -inset-2 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                <div className="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-10">
+                  
+                  <div className="mb-8">
+                    <h3 className="text-3xl font-bold text-white mb-4 flex items-center">
+                      <span className="w-3 h-3 bg-green-500 rounded-full mr-4 animate-pulse"></span>
+                      Full Stack Developer
+                    </h3>
+                    <p className="text-gray-300 text-lg leading-relaxed">
+                      I'm a passionate <span className="text-purple-400 font-semibold">Full Stack Developer</span> with expertise in the 
+                      <span className="text-cyan-400 font-semibold"> MERN stack</span>, building scalable web applications from 
+                      concept to deployment. My journey combines modern web technologies with strong computer science fundamentals.
+                    </p>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
+                      <div>
+                        <h4 className="text-purple-400 font-semibold text-lg">Problem Solving Expert</h4>
+                        <p className="text-gray-300">Strong foundation in <span className="text-yellow-400">Data Structures & Algorithms</span> with hands-on problem-solving experience</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-4">
+                      <div className="w-2 h-2 bg-cyan-500 rounded-full mt-2"></div>
+                      <div>
+                        <h4 className="text-cyan-400 font-semibold text-lg">Computer Science Foundation</h4>
+                        <p className="text-gray-300"><span className="text-orange-400">OOP with Java</span>, <span className="text-blue-400">Computer Networking</span>, and <span className="text-green-400">Operating Systems</span> knowledge</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-4">
+                      <div className="w-2 h-2 bg-pink-500 rounded-full mt-2"></div>
+                      <div>
+                        <h4 className="text-pink-400 font-semibold text-lg">AI & Machine Learning</h4>
+                        <p className="text-gray-300">Currently learning <span className="text-pink-400">Artificial Intelligence</span> and completed basics of <span className="text-indigo-400">Machine Learning</span></p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-4">
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
+                      <div>
+                        <h4 className="text-yellow-400 font-semibold text-lg">Community Focused</h4>
+                        <p className="text-gray-300">Believer in <span className="text-yellow-400">learning in public</span> and preparing to become an <span className="text-green-400">open source contributor</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Side - Skills Grid */}
+              <div className="space-y-6">
+                
+                {/* Core CS Skills */}
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                  <div className="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-xl border border-orange-500/20 rounded-2xl p-6">
+                    <h4 className="text-xl font-bold text-orange-400 mb-4 flex items-center">
+                      <span className="text-2xl mr-3">🧠</span>
+                      Computer Science Core
+                    </h4>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="flex items-center space-x-2">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" className="w-6 h-6" />
+                        <span className="text-gray-300 text-sm">OOP with Java</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <span className="w-6 h-6 bg-purple-500 rounded flex items-center justify-center text-white text-xs font-bold">DSA</span>
+                        <span className="text-gray-300 text-sm">Data Structures</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <span className="w-6 h-6 bg-blue-500 rounded flex items-center justify-center text-white text-xs font-bold">NET</span>
+                        <span className="text-gray-300 text-sm">Networking</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <span className="w-6 h-6 bg-green-500 rounded flex items-center justify-center text-white text-xs font-bold">OS</span>
+                        <span className="text-gray-300 text-sm">Operating Systems</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* AI & ML */}
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                  <div className="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-xl border border-pink-500/20 rounded-2xl p-6">
+                    <h4 className="text-xl font-bold text-pink-400 mb-4 flex items-center">
+                      <span className="text-2xl mr-3">🤖</span>
+                      AI & Machine Learning
+                    </h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
+                        <span className="text-gray-300">Currently Learning AI</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        <span className="text-gray-300">ML Basics Completed</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" className="w-5 h-5" />
+                        <span className="text-gray-300">Python for AI/ML</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Community & Growth */}
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                  <div className="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-xl border border-green-500/20 rounded-2xl p-6">
+                    <h4 className="text-xl font-bold text-green-400 mb-4 flex items-center">
+                      <span className="text-2xl mr-3">🌟</span>
+                      Community & Growth
+                    </h4>
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-3">
+                        <span className="w-5 h-5 bg-yellow-500 rounded flex items-center justify-center text-white text-xs font-bold">📚</span>
+                        <span className="text-gray-300">Learning in Public</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <span className="w-5 h-5 bg-green-500 rounded flex items-center justify-center text-white text-xs font-bold">🔗</span>
+                        <span className="text-gray-300">Future Open Source Contributor</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <span className="w-5 h-5 bg-cyan-500 rounded flex items-center justify-center text-white text-xs font-bold">💡</span>
+                        <span className="text-gray-300">Continuous Learner</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Journey Quote */}
+            <div className="mt-16 text-center">
+              <div className="relative group max-w-4xl mx-auto">
+                <div className="absolute -inset-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+                <div className="relative bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8">
+                  <blockquote className="text-2xl font-medium text-gray-200 italic mb-4">
+                    "Code is like humor. When you have to explain it, it's bad."
+                  </blockquote>
+                  <p className="text-gray-400">
+                    My journey is about writing clean, efficient code while continuously learning and sharing knowledge with the community.
+                  </p>
                 </div>
               </div>
             </div>
