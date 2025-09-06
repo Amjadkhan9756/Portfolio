@@ -166,7 +166,7 @@ function Home() {
 
                     {/* Skill Tags */}
                     <div className="flex flex-wrap justify-center gap-3 mb-8">
-                      {['React.js', 'Node.js', 'Express.js','MongoDB' , 'TypeScript', 'Next.js'].map((skill, index) => (
+                      {['React', 'Node.js', 'MongoDB', 'Express', 'TypeScript', 'Next.js'].map((skill, index) => (
                         <span
                           key={skill}
                           className="px-4 py-2 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border border-purple-500/20 rounded-full text-sm text-purple-300 hover:from-purple-500/20 hover:to-cyan-500/20 transition-all duration-300 hover:scale-105"
@@ -193,6 +193,183 @@ function Home() {
                   <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-cyan-500/50 rounded-tr-lg" />
                   <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-pink-500/50 rounded-bl-lg" />
                   <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-purple-500/50 rounded-br-lg" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Skills Section */}
+        <div className="mt-32 pb-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
+              My Development Expertise
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full mb-6"></div>
+            <p className="text-gray-300 text-xl max-w-3xl mx-auto">
+              Full-stack development with strong algorithmic foundation and modern frameworks
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
+            
+            {/* Frontend Development */}
+            <div className="group relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+              <div className="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-xl border border-cyan-500/20 rounded-3xl p-8 transform group-hover:scale-105 transition-all duration-500">
+                <div className="text-center mb-6">
+                  <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center">
+                    <span className="text-3xl">⚛️</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-cyan-400 mb-2">Frontend Development</h3>
+                  <div className="w-16 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full"></div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" className="w-8 h-8" />
+                    <span className="text-gray-300 font-medium">React.js & Hooks</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" className="w-8 h-8" />
+                    <span className="text-gray-300 font-medium">JavaScript ES6+</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" className="w-8 h-8" />
+                    <span className="text-gray-300 font-medium">HTML5 & CSS3</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind" className="w-8 h-8" />
+                    <span className="text-gray-300 font-medium">Tailwind CSS</span>
+                  </div>
+                   <div className="flex items-center space-x-3">
+                    <img src="https://cdn.neowin.com/news/images/uploaded/2024/03/1709760302_typescript.jpg" alt="TypeScript" className="w-8 h-8" />
+                    <span className="text-gray-300 font-medium">TypeScript</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Backend Development */}
+            <div className="group relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-3xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+              <div className="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-xl border border-green-500/20 rounded-3xl p-8 transform group-hover:scale-105 transition-all duration-500">
+                <div className="text-center mb-6">
+                  <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center">
+                    <span className="text-3xl">🚀</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-green-400 mb-2">Backend Development</h3>
+                  <div className="w-16 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 mx-auto rounded-full"></div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-8 h-8" />
+                    <span className="text-gray-300 font-medium">Node.js & Express</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="w-8 h-8" />
+                    <span className="text-gray-300 font-medium">MongoDB & Mongoose</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL" className="w-8 h-8" />
+                    <span className="text-gray-300 font-medium">MySQL & PostgreSQL</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <span className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center text-white text-sm font-bold">API</span>
+                    <span className="text-gray-300 font-medium">RESTful APIs</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* DSA & Programming */}
+            <div className="group relative lg:col-span-2 xl:col-span-1">
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+              <div className="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8 transform group-hover:scale-105 transition-all duration-500">
+                <div className="text-center mb-6">
+                  <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center">
+                    <span className="text-3xl">🧠</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-purple-400 mb-2">DSA & Programming</h3>
+                  <div className="w-16 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" className="w-8 h-8" />
+                    <span className="text-gray-300 font-medium">Java Programming</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <span className="w-8 h-8 bg-purple-500 rounded flex items-center justify-center text-white text-xs font-bold">DSA</span>
+                    <span className="text-gray-300 font-medium">Data Structures & Algorithms</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <span className="w-8 h-8 bg-indigo-500 rounded flex items-center justify-center text-white text-xs font-bold">OOPs</span>
+                    <span className="text-gray-300 font-medium">OOPs with java</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" className="w-8 h-8" />
+                    <span className="text-gray-300 font-medium">Python</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Skills Description */}
+          <div className="mt-16 max-w-4xl mx-auto px-6">
+            <div className="relative group">
+              <div className="absolute -inset-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+              <div className="relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-10">
+                <h3 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                  Full-Stack Development Philosophy
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-semibold text-purple-400 flex items-center">
+                      <span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                      Frontend Excellence
+                    </h4>
+                    <p className="text-gray-300 leading-relaxed">
+                      I create responsive, interactive user interfaces using React.js with modern hooks and state management. 
+                      My focus is on clean, maintainable code with pixel-perfect designs using Tailwind CSS.
+                    </p>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-semibold text-green-400 flex items-center">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                      Backend Mastery
+                    </h4>
+                    <p className="text-gray-300 leading-relaxed">
+                      I build scalable server-side applications using Node.js and Express, with expertise in database design 
+                      using MongoDB and SQL databases, creating efficient RESTful APIs.
+                    </p>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-semibold text-pink-400 flex items-center">
+                      <span className="w-2 h-2 bg-pink-500 rounded-full mr-3"></span>
+                      Problem Solving
+                    </h4>
+                    <p className="text-gray-300 leading-relaxed">
+                      Strong foundation in Data Structures and Algorithms using Java. I approach complex problems 
+                      systematically, optimizing for performance and scalability in every solution.
+                    </p>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-semibold text-cyan-400 flex items-center">
+                      <span className="w-2 h-2 bg-cyan-500 rounded-full mr-3"></span>
+                      Modern Development
+                    </h4>
+                    <p className="text-gray-300 leading-relaxed">
+                      I stay updated with the latest technologies and best practices, using TypeScript for type safety 
+                      and following modern development workflows with version control and testing.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
