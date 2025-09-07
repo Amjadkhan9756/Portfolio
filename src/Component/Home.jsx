@@ -183,12 +183,12 @@ function Home() {
                     {/* Skill Tags */}
                     <div className="flex flex-wrap justify-center gap-3 mb-8">
                       {[
-                        "React",
+                        "React.js",
                         "Node.js",
+
+                        "Express.js",
                         "MongoDB",
-                        "Express",
                         "TypeScript",
-                        
                       ].map((skill, index) => (
                         <span
                           key={skill}
@@ -270,7 +270,7 @@ function Home() {
                       className="w-8 h-8"
                     />
                     <span className="text-gray-300 font-medium">
-                      Tailwind CSS
+                      Tailwind CSS & Bootstrap
                     </span>
                   </div>
                   <div className="flex items-center space-x-3">
@@ -280,7 +280,7 @@ function Home() {
                       className="w-8 h-8"
                     />
                     <span className="text-gray-300 font-medium">
-                      JavaScript ES6+
+                      JavaScript ES6+ & TypeScript
                     </span>
                   </div>
                   <div className="flex items-center space-x-3">
@@ -330,14 +330,14 @@ function Home() {
                       MongoDB & Mongoose
                     </span>
                   </div>
-                  <div className="flex items-center space-x-3">
+                  {/* <div className="flex items-center space-x-3">
                     <img
                       src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
                       alt="MySQL"
                       className="w-8 h-8"
                     />
                     <span className="text-gray-300 font-medium">MySQL </span>
-                  </div>
+                  </div> */}
                   <div className="flex items-center space-x-3">
                     <span className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center text-white text-sm font-bold">
                       API
