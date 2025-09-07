@@ -188,7 +188,7 @@ function Home() {
                         "MongoDB",
                         "Express",
                         "TypeScript",
-                        "Next.js",
+                        
                       ].map((skill, index) => (
                         <span
                           key={skill}
@@ -542,7 +542,7 @@ function Home() {
                           </span>
                           , and{" "}
                           <span className="text-green-400">
-                            Operating Systems
+                            Data base Management System
                           </span>{" "}
                           knowledge
                         </p>
@@ -613,11 +613,9 @@ function Home() {
                       </div>
                       <div className="flex items-center space-x-2">
                         <span className="w-6 h-6 bg-purple-500 rounded flex items-center justify-center text-white text-xs font-bold">
-                          DSA
+                          AP
                         </span>
-                        <span className="text-gray-300 text-sm">
-                          Data Structures
-                        </span>
+                        <span className="text-gray-300 text-sm">Aptitude</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <span className="w-6 h-6 bg-blue-500 rounded flex items-center justify-center text-white text-xs font-bold">
@@ -628,11 +626,11 @@ function Home() {
                         </span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <span className="w-6 h-6 bg-green-500 rounded flex items-center justify-center text-white text-xs font-bold">
-                          OS
+                        <span className="w-9 h-7 bg-green-500 rounded flex items-center justify-center text-white text-xs font-bold">
+                          DBMS
                         </span>
                         <span className="text-gray-300 text-sm">
-                          Operating Systems
+                          Data base Management System
                         </span>
                       </div>
                     </div>
