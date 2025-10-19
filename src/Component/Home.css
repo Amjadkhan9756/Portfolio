@@ -2,8 +2,6 @@ body {
     background: linear-gradient(to right, #d7fe7b7e, #cfff5f56);
 }
 
-
-/* 
-.container :hover {
-    box-shadow: 8px 8px 12px black;
-} */
+.container {
+    color: Pink;
+}
