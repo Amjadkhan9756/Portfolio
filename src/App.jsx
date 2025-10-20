@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./Navbar";
 import Home from "./Component/Home";
-import Skill from "./Component/Skill";
+import Project from "./Component/Project";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -11,8 +11,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/Skill" element={<Skill/>}/>
-       
+        <Route path="/Project" element={<Project/>}/>      
       </Routes>
     </BrowserRouter>
   );
