@@ -146,7 +146,7 @@ function Home() {
                     {/* Greeting */}
                     <div className="mb-6">
                       <span className="inline-block px-4 py-2 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full border border-purple-500/30 text-purple-300 text-sm font-medium mb-4">
-                        👋 Welcome to my digital space
+                        👋 Get In Touch by Email-[amjadkhann.tech@gmail.com] &[mobile No=9756859054]
                       </span>
                     </div>
 
@@ -204,7 +204,7 @@ function Home() {
                     <div className="flex justify-center">
                       <button className="group px-8 py-4 border-2 border-cyan-500/50 rounded-2xl font-semibold text-cyan-400 hover:bg-cyan-500/10 transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/25">
                         <span className="flex items-center justify-center gap-2">
-                          Get In Touch
+                          Get In Touch by Email-[amjadkhann.tech@gmail.com]
                           <span className="transform group-hover:translate-x-1 transition-transform duration-300">
                             →
                           </span>
@@ -611,7 +611,7 @@ function Home() {
                           OOP with Java
                         </span>
                       </div>
-                     
+
                       <div className="flex items-center space-x-2">
                         <span className="w-6 h-6 bg-blue-500 rounded flex items-center justify-center text-white text-xs font-bold">
                           CN
@@ -628,13 +628,12 @@ function Home() {
                           Data base Management System
                         </span>
                       </div>
-                       <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-2">
                         <span className="w-6 h-6 bg-purple-500 rounded flex items-center justify-center text-white text-xs font-bold">
                           AP
                         </span>
                         <span className="text-gray-300 text-sm">Aptitude</span>
                       </div>
-                      
                     </div>
                   </div>
                 </div>
