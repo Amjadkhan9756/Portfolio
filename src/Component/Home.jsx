@@ -189,6 +189,7 @@ function Home() {
                         "Express.js",
                         "MongoDB",
                         "TypeScript",
+                        "Next.js"
                       ].map((skill, index) => (
                         <span
                           key={skill}
@@ -289,7 +290,7 @@ function Home() {
                       alt="React"
                       className="w-8 h-8"
                     />
-                    <span className="text-gray-300 font-medium">React.js </span>
+                    <span className="text-gray-300 font-medium">React.js & Redux Toolkit</span>
                   </div>
                 </div>
               </div>
