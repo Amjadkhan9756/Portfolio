@@ -27,6 +27,14 @@ const Navbar = () => {
               Project in Detail
             </Link>
           </li>
+             <li>
+            <Link
+              to="/Skill"
+              className="text-white font-medium hover:text-yellow-300 transition duration-300"
+            >
+              Skill in Detail
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

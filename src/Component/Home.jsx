@@ -189,7 +189,7 @@ function Home() {
                         "Express.js",
                         "MongoDB",
                         "TypeScript",
-                        "Next.js"
+                       
                       ].map((skill, index) => (
                         <span
                           key={skill}
