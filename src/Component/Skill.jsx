@@ -12,6 +12,7 @@ function Skill() {
                         { name: "HTML5", desc: "Semantic markup & accessibility" },
                         { name: "CSS3", desc: "Animations, Grid & Flexbox" },
                         { name: "JavaScript", desc: "ES6+, Async programming" },
+                        { name: "TypeScript", desc: "Static typing for JavaScript" },
                         { name: "React.js", desc: "Frontend library with Hooks & lifecycle" },
                         { name: "Redux Toolkit", desc: "State management for React" },
                         { name: "Bootstrap", desc: "Rapid UI development" },
@@ -88,7 +89,7 @@ function Skill() {
 
     const stats = [
         { icon: "🚀", number: "MERN", label: "Full Stack" },
-        { icon: "💻", number: "11+", label: "Technologies" },
+        { icon: "💻", number: "12+", label: "Technologies" },
         { icon: "🌐", number: "Full Stack", label: "Developer" }
     ];
 
@@ -262,7 +263,7 @@ function Skill() {
                     <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
                         <h3 className="text-2xl font-bold text-white mb-6 text-center">Complete Technology Stack</h3>
                         <div className="flex flex-wrap justify-center gap-3">
-                            {["MongoDB", "Express.js", "React.js", "Node.js", "JavaScript", "HTML5", "CSS3", 
+                            {["MongoDB", "Express.js", "React.js", "Node.js", "JavaScript", "TypeScript", "HTML5", "CSS3", 
                               "Tailwind CSS", "Bootstrap", "Redux Toolkit", "Git", "GitHub", "Postman", 
                               "Java", "Python", "DSA", "OOP", "REST API"].map((tech, idx) => (
                                 <span 
