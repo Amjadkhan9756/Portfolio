@@ -60,9 +60,9 @@ function Skill() {
       description: "Expanding my skillset with cutting-edge technologies",
       fullRow: true, // 👈 also full width now
       skills: [
-        { name: "Artificial Intelligence", desc: "ML algorithms with Python" },
+        { name: "Artificial Intelligence", desc: "AI/ML  with Python" },
+        {name:'Machine Learning',desc:'AI/ML with Python'},
         { name: "Python", desc: "AI/ML libraries & frameworks" },
-        { name: "Advanced MERN", desc: "Microservices & scalability" },
       ],
     },
     {
