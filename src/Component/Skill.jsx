@@ -108,20 +108,28 @@ function Skill() {
         <div className="text-center mb-20">
           <div className="inline-block mb-4">
             <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold tracking-wide">
-              TECHNICAL EXPERTISE
+              Abut me
             </span>
           </div>
-          <h1 className="text-6xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
+         
+          <p className="text-gray-400 text-xl mx-auto leading-relaxed">
+            I'm a B.Tech CSE student passionate about Data Structures &
+            Algorithms and software development.also MERN Stack Developer with
+            experience building multiple projects to strengthen my development
+            skills. I have completed a full-stack project called “Entertainment
+            Recommendation” and i am currently working on several other
+            projects. I believe in the concept of learning in public, and I
+            actively share my learning journey online. and also I am planing to
+            contribute to open-source projects. Alongside my development work, I
+            am also exploring and learning Artificial Intelligence (AI) to
+            expand my technical expertise
+          </p>
+           <h1 className="text-6xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
             My{" "}
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
               Skills
             </span>
           </h1>
-          <p className="text-gray-400 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
-            A comprehensive showcase of my technical capabilities as a MERN Full
-            Stack Developer, with a passion for continuous learning and
-            community engagement.
-          </p>
         </div>
 
         {/* Skills Grid */}
