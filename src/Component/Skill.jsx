@@ -59,9 +59,11 @@ function Skill() {
       description: "Expanding my skillset with cutting-edge technologies",
       fullRow: true, // 👈 also full width now
       skills: [
+                { name: "Python", desc: "AI/ML libraries & frameworks" },
+
+                { name: "Machine Learning", desc: "AI/ML with Python" },
+
         { name: "Artificial Intelligence", desc: "AI/ML  with Python" },
-        { name: "Machine Learning", desc: "AI/ML with Python" },
-        { name: "Python", desc: "AI/ML libraries & frameworks" },
       ],
     },
     {
@@ -74,7 +76,7 @@ function Skill() {
         { name: "OOP", desc: "Design patterns & principles" },
         { name: "Computer Networking", desc: "TCP/IP, HTTP, DNS protocols" },
         { name: "DBMS", desc: "SQL, Normalization, Transactions" },
-        { name: "Aptitude", desc: "Logical & analytical reasoning" },
+        // { name: "Aptitude", desc: "Logical & analytical reasoning" },
       ],
     },
     {
