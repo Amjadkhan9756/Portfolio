@@ -629,12 +629,12 @@ function Home() {
                           Data base Management System
                         </span>
                       </div>
-                      <div className="flex items-center space-x-2">
+                      {/* <div className="flex items-center space-x-2">
                         <span className="w-6 h-6 bg-purple-500 rounded flex items-center justify-center text-white text-xs font-bold">
                           AP
                         </span>
                         <span className="text-gray-300 text-sm">Aptitude</span>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
