@@ -213,11 +213,6 @@ function Home() {
                     {/* Content */}
                     <div className="relative z-10 text-center">
                       {/* Greeting */}
-                      <div className="mb-6">
-                        <span className="inline-block px-4 py-2 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full border border-purple-500/30 text-purple-300 text-sm font-medium mb-4">
-                          👋 Get In Touch
-                        </span>
-                      </div>
 
                       {/* Main Title */}
                       <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
@@ -353,16 +348,18 @@ function Home() {
               </div>
 
               <p className="text-gray-400 text-xl mx-auto leading-relaxed max-w-4xl mb-12">
-                I'm a B.Tech CSE student passionate about Data Structures &
-                Algorithms and software development. Also MERN Stack Developer
-                with experience building multiple projects to strengthen my
-                development skills. I have completed a full-stack project called
-                "Entertainment Recommendation" and I am currently working on
-                several other projects. I believe in the concept of learning in
-                public, and I actively share my learning journey online. I am
-                planning to contribute to open-source projects. Alongside my
-                development work, I am also exploring and learning Artificial
-                Intelligence (AI) to expand my technical expertise.
+                Hi, I am Amjad, a Full-stack Developer passionate about
+                creating and delivering projects that make a real-world impact.
+                I specialize in full-stack development with MERN Stack and
+                Express.js, using TypeScript for type safety. I have experience
+                with modern web technologies and tools. Have an idea, want to
+                collaborate, or have an internship opportunity? Feel free to
+                message me! I'm always excited to connect and work on great
+                projects.
+                
+                 Alongside my development work, I am also
+                exploring and learning Artificial Intelligence (AI) to expand my
+                technical expertise.
               </p>
 
               <h2 className="text-6xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
