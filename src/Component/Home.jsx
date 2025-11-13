@@ -270,12 +270,18 @@ function Home() {
 
                       {/* Contact Info */}
                       <div className="space-y-3 mb-6">
-                        <div className="text-cyan-400 text-sm">
+                        <a
+                          href="mailto:amjadkhann.tech@gmail.com"
+                          className="block text-cyan-400 text-sm hover:text-cyan-300 transition-colors duration-300 cursor-pointer"
+                        >
                           📧 amjadkhann.tech@gmail.com
-                        </div>
-                        <div className="text-purple-400 text-sm">
+                        </a>
+                        <a
+                          href="tel:+919756859054"
+                          className="block text-purple-400 text-sm hover:text-purple-300 transition-colors duration-300 cursor-pointer"
+                        >
                           📱 9756859054
-                        </div>
+                        </a>
                       </div>
 
                       {/* Social Links */}
@@ -347,14 +353,16 @@ function Home() {
               </div>
 
               <p className="text-gray-400 text-xl mx-auto leading-relaxed max-w-4xl mb-12">
-                Hi, I am Amjad, a Full-stack Developer passionate about
-                creating and delivering projects that make a real-world impact.
-                I specialize in full-stack development with MERN stack and
-                Express.js, using TypeScript for type safety. I have experience
-                with modern web technologies and tools. Have an idea, want to
-                collaborate, or have an internship opportunity? Feel free to
-                message me! I'm always excited to connect and work on great
-                projects. Contact me
+                I'm a B.Tech CSE student passionate about Data Structures &
+                Algorithms and software development. Also MERN Stack Developer
+                with experience building multiple projects to strengthen my
+                development skills. I have completed a full-stack project called
+                "Entertainment Recommendation" and I am currently working on
+                several other projects. I believe in the concept of learning in
+                public, and I actively share my learning journey online. I am
+                planning to contribute to open-source projects. Alongside my
+                development work, I am also exploring and learning Artificial
+                Intelligence (AI) to expand my technical expertise.
               </p>
 
               <h2 className="text-6xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
