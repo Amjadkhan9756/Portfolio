@@ -52,8 +52,11 @@ function Home() {
               name: "React.js",
               desc: "Frontend library with Hooks & lifecycle",
             },
-            { name: "Redux Toolkit", desc: "State management for React" },
-            { name: "Tailwind CSS", desc: "Utility-first styling" },
+            
+              { name: "Redux Toolkit", desc: "State management for React" },
+              { name: "Next.js", desc: "React framework for production" },
+              { name: "Tailwind CSS", desc: "Utility-first styling" },
+            
           ],
         },
         {
@@ -70,18 +73,18 @@ function Home() {
         },
       ],
     },
-    {
-      title: "Currently Learning",
-      icon: "✨",
-      color: "from-yellow-500 to-amber-500",
-      description: "Expanding my skillset with cutting-edge technologies",
-      fullRow: true,
-      skills: [
-        { name: "Python", desc: "AI/ML libraries & frameworks" },
-        { name: "Machine Learning", desc: "AI/ML with Python" },
-        { name: "Artificial Intelligence", desc: "AI/ML with Python" },
-      ],
-    },
+    // {
+    //   title: "Currently Learning",
+    //   icon: "✨",
+    //   color: "from-yellow-500 to-amber-500",
+    //   description: "Expanding my skillset with cutting-edge technologies",
+    //   fullRow: true,
+    //   skills: [
+    //     { name: "Python", desc: "AI/ML libraries & frameworks" },
+    //     { name: "Machine Learning", desc: "AI/ML with Python" },
+    //     { name: "Artificial Intelligence", desc: "AI/ML with Python" },
+    //   ],
+    // },
     {
       title: "Core Computer Science",
       icon: "📚",
@@ -105,16 +108,17 @@ function Home() {
         { name: "Postman", desc: "API testing & documentation" },
       ],
     },
-    {
-      title: "Community & Growth",
-      icon: "👥",
-      color: "from-teal-500 to-green-500",
-      description: "Actively contributing to the developer community",
-      skills: [
-        { name: "Learning in Public", desc: "Sharing knowledge & progress" },
-        { name: "Open Source", desc: "Contributing to projects" },
-      ],
-    },
+  
+    // {
+    //   title: "Community & Growth",
+    //   icon: "👥",
+    //   color: "from-teal-500 to-green-500",
+    //   description: "Actively contributing to the developer community",
+    //   skills: [
+    //     { name: "Learning in Public", desc: "Sharing knowledge & progress" },
+    //     { name: "Open Source", desc: "Contributing to projects" },
+    //   ],
+    // },
   ];
 
   return (
@@ -247,10 +251,11 @@ function Home() {
                       {/* Skill Tags */}
                       <div className="flex flex-wrap justify-center gap-3 mb-8">
                         {[
-                          "React.js",
                           "Node.js",
                           "Express.js",
                           "MongoDB",
+                          "React.js",
+                          "Next.js",
                           "TypeScript",
                         ].map((skill, index) => (
                           <span
@@ -261,22 +266,6 @@ function Home() {
                             {skill}
                           </span>
                         ))}
-                      </div>
-
-                      {/* Contact Info */}
-                      <div className="space-y-3 mb-6">
-                        <a
-                          href="mailto:amjadkhann.tech@gmail.com"
-                          className="block text-cyan-400 text-sm hover:text-cyan-300 transition-colors duration-300 cursor-pointer"
-                        >
-                          📧 amjadkhann.tech@gmail.com
-                        </a>
-                        <a
-                          href="tel:+919756859054"
-                          className="block text-purple-400 text-sm hover:text-purple-300 transition-colors duration-300 cursor-pointer"
-                        >
-                          📱 9756859054
-                        </a>
                       </div>
 
                       {/* Social Links */}
@@ -322,6 +311,17 @@ function Home() {
                           </span>
                         </a>
                       </div>
+                      <br />
+
+                      {/* Contact Info */}
+                      <div className="space-y-3 mb-6">
+                        <a
+                          href="tel:+919756859054"
+                          className="block text-purple-400 text-sm hover:text-purple-300 transition-colors duration-300 cursor-pointer"
+                        >
+                          📱 9756859054
+                        </a>
+                      </div>
                     </div>
 
                     {/* Corner Decorations */}
@@ -348,18 +348,16 @@ function Home() {
               </div>
 
               <p className="text-gray-400 text-xl mx-auto leading-relaxed max-w-4xl mb-12">
-                Hi, I am Amjad, a Full-stack Developer passionate about
-                creating and delivering projects that make a real-world impact.
-                I specialize in full-stack development with MERN Stack and
+                Hi, I am Amjad, a Full-stack Developer passionate about creating
+                and delivering projects that make a real-world impact. I
+                specialize in full-stack development with MERN Stack and
                 Express.js, using TypeScript for type safety. I have experience
                 with modern web technologies and tools. Have an idea, want to
                 collaborate, or have an internship opportunity? Feel free to
                 message me! I'm always excited to connect and work on great
-                projects.
-                
-                 Alongside my development work, I am also
-                exploring and learning Artificial Intelligence (AI) to expand my
-                technical expertise.
+                projects. Alongside my development work, I am also exploring and
+                learning Artificial Intelligence (AI) to expand my technical
+                expertise.
               </p>
 
               <h2 className="text-6xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
@@ -471,36 +469,6 @@ function Home() {
               ))}
             </div>
 
-            {/* Additional Info Section */}
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gradient-to-br from-blue-900/20 to-blue-800/20 backdrop-blur-sm rounded-2xl p-8 border border-blue-700/30">
-                <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                  <span className="text-3xl">✨</span>
-                  Why MERN Stack?
-                </h3>
-                <p className="text-gray-300 leading-relaxed">
-                  The MERN stack provides a powerful, unified JavaScript
-                  ecosystem for building modern web applications. From database
-                  to frontend, I leverage MongoDB for flexible data storage,
-                  Express and Node.js for robust server-side operations, and
-                  React for creating dynamic, responsive user interfaces.
-                </p>
-              </div>
-              <div className="bg-gradient-to-br from-purple-900/20 to-purple-800/20 backdrop-blur-sm rounded-2xl p-8 border border-purple-700/30">
-                <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                  <span className="text-3xl">🚀</span>
-                  Continuous Growth
-                </h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Technology evolves rapidly, and so do I. Currently exploring
-                  AI and machine learning with Python while mastering advanced
-                  MERN concepts. I believe in learning in public and
-                  contributing to open source to grow together with the
-                  community.
-                </p>
-              </div>
-            </div>
-
             {/* Tech Stack Visual */}
             <div className="mt-12">
               <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
@@ -512,6 +480,7 @@ function Home() {
                     "MongoDB",
                     "Express.js",
                     "React.js",
+                    "Next.js",
                     "Node.js",
                     "JavaScript",
                     "TypeScript",
