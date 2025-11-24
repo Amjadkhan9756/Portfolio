@@ -266,14 +266,14 @@ function Home() {
                       <br />
 
                       {/* Contact Info */}
-                      <div className="space-y-3 mb-6">
+                      {/* <div className="space-y-3 mb-6">
                         <a
                           href="tel:+919756859054"
                           className="block text-purple-400 text-sm hover:text-purple-300 transition-colors duration-300 cursor-pointer"
                         >
                           📱 9756859054
                         </a>
-                      </div>
+                      </div> */}
                     </div>
 
                     {/* Corner Decorations */}
