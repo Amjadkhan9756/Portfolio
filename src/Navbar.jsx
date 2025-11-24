@@ -6,7 +6,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo */}
-        <h1 className="text-white font-bold text-xl">My Portfolio</h1>
+        <h1 className="text-white font-bold text-xl">Amjad khan</h1>
         
         {/* Links */}
         <ul className="flex space-x-6">
