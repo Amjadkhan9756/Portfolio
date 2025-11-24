@@ -24,7 +24,6 @@ function Home() {
       color: "from-purple-500 to-pink-500",
       description:
         "Strong foundation in algorithms and problem-solving with Java",
-      fullRow: true,
       skills: [
         {
           name: "Data Structures",
@@ -39,52 +38,18 @@ function Home() {
       icon: "🚀",
       color: "from-blue-500 via-purple-500 to-pink-500",
       description:
-        "Building complete web applications from frontend to backend with modern JavaScript technologies",
-      subsections: [
-        {
-          subtitle: "Frontend Technologies",
-          skills: [
-            { name: "HTML5", desc: "Semantic markup & accessibility" },
-            { name: "CSS3", desc: "Animations, Grid & Flexbox" },
-            { name: "JavaScript", desc: "ES6+, Async programming" },
-            { name: "TypeScript", desc: "Static typing for JavaScript" },
-            {
-              name: "React.js",
-              desc: "Frontend library with Hooks & lifecycle",
-            },
-            
-              { name: "Redux Toolkit", desc: "State management for React" },
-              { name: "Next.js", desc: "React framework for production" },
-              { name: "Tailwind CSS", desc: "Utility-first styling" },
-            
-          ],
-        },
-        {
-          subtitle: "Backend Technologies",
-          skills: [
-            { name: "Node.js", desc: "Server-side JavaScript runtime" },
-            { name: "Express.js", desc: "Backend framework for Node.js" },
-            {
-              name: "MongoDB",
-              desc: "NoSQL database management & data modeling",
-            },
-            { name: "RESTful API", desc: "API design & implementation" },
-          ],
-        },
+        "Building complete web applications from frontend to backend",
+      skills: [
+        { name: "HTML5 & CSS3", desc: "Modern web layouts & styling" },
+        { name: "JavaScript & TypeScript", desc: "ES6+ programming" },
+        { name: "React.js & Next.js", desc: "Frontend frameworks" },
+        { name: "Redux Toolkit", desc: "State management" },
+        { name: "Tailwind CSS", desc: "Utility-first styling" },
+        { name: "Node.js & Express.js", desc: "Backend development" },
+        { name: "MongoDB", desc: "Database management" },
+        { name: "RESTful API", desc: "API design" },
       ],
     },
-    // {
-    //   title: "Currently Learning",
-    //   icon: "✨",
-    //   color: "from-yellow-500 to-amber-500",
-    //   description: "Expanding my skillset with cutting-edge technologies",
-    //   fullRow: true,
-    //   skills: [
-    //     { name: "Python", desc: "AI/ML libraries & frameworks" },
-    //     { name: "Machine Learning", desc: "AI/ML with Python" },
-    //     { name: "Artificial Intelligence", desc: "AI/ML with Python" },
-    //   ],
-    // },
     {
       title: "Core Computer Science",
       icon: "📚",
@@ -108,17 +73,6 @@ function Home() {
         { name: "Postman", desc: "API testing & documentation" },
       ],
     },
-  
-    // {
-    //   title: "Community & Growth",
-    //   icon: "👥",
-    //   color: "from-teal-500 to-green-500",
-    //   description: "Actively contributing to the developer community",
-    //   skills: [
-    //     { name: "Learning in Public", desc: "Sharing knowledge & progress" },
-    //     { name: "Open Source", desc: "Contributing to projects" },
-    //   ],
-    // },
   ];
 
   return (
@@ -216,8 +170,6 @@ function Home() {
                   <div className="relative bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-gray-900/90 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-12 shadow-2xl transform group-hover:scale-105 transition-all duration-500 overflow-hidden">
                     {/* Content */}
                     <div className="relative z-10 text-center">
-                      {/* Greeting */}
-
                       {/* Main Title */}
                       <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
                         <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -369,18 +321,9 @@ function Home() {
             </div>
 
             {/* Skills Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {skillCategories.map((category, index) => (
-                <div
-                  key={index}
-                  className={`group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-700 
-                          hover:border-gray-600 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2 
-                          ${
-                            category.fullRow || category.subsections
-                              ? "lg:col-span-2"
-                              : ""
-                          }`}
-                >
+                <div key={index} className="group bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2">
                   {/* Category Header */}
                   <div className="flex items-start gap-4 mb-6">
                     <div
@@ -392,79 +335,26 @@ function Home() {
                       <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
                         {category.title}
                       </h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">
+                      <p className="text-gray-300 text-sm leading-relaxed">
                         {category.description}
                       </p>
                     </div>
                   </div>
 
                   {/* Skills Content */}
-                  {category.fullRow ? (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      {category.skills.map((skill, skillIndex) => (
-                        <div
-                          key={skillIndex}
-                          className="bg-gray-800/50 rounded-xl p-6 border border-gray-700/50 hover:border-purple-500/50 hover:bg-gray-800 transition-all duration-300 group/skill overflow-hidden flex flex-col items-center text-center"
-                        >
-                          <div className="w-16 h-16 mb-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-3xl group-hover/skill:scale-110 transition-transform duration-300">
-                            {skillIndex === 0
-                              ? "📊"
-                              : skillIndex === 1
-                              ? "🧠"
-                              : "☕"}
-                          </div>
-                          <h4 className="text-white font-bold text-xl mb-2 group-hover/skill:text-transparent group-hover/skill:bg-gradient-to-r group-hover/skill:from-purple-400 group-hover/skill:to-pink-400 group-hover/skill:bg-clip-text transition-all duration-200">
-                            {skill.name}
-                          </h4>
-                          <p className="text-gray-400 text-sm leading-relaxed">
-                            {skill.desc}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  ) : category.subsections ? (
-                    <div className="grid md:grid-cols-2 gap-6">
-                      {category.subsections.map((subsection, subIndex) => (
-                        <div key={subIndex}>
-                          <h4 className="text-lg font-bold text-blue-400 mb-4 flex items-center gap-2">
-                            <span className="text-2xl">
-                              {subIndex === 0 ? "💻" : "🗄️"}
-                            </span>
-                            {subsection.subtitle}
-                          </h4>
-                          <div className="space-y-3">
-                            {subsection.skills.map((skill, skillIndex) => (
-                              <div
-                                key={skillIndex}
-                                className="bg-gray-800/50 rounded-xl p-4 border border-gray-700/50 hover:border-gray-600 hover:bg-gray-800 transition-all duration-300 group/skill"
-                              >
-                                <h5 className="text-white font-semibold text-base group-hover/skill:text-blue-400 transition-colors duration-200 mb-2">
-                                  {skill.name}
-                                </h5>
-                                <p className="text-gray-400 text-sm">
-                                  {skill.desc}
-                                </p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="grid grid-cols-1 gap-4">
-                      {category.skills.map((skill, skillIndex) => (
-                        <div
-                          key={skillIndex}
-                          className="bg-gray-800/50 rounded-xl p-4 border border-gray-700/50 hover:border-gray-600 hover:bg-gray-800 transition-all duration-300 group/skill"
-                        >
-                          <h4 className="text-white font-semibold text-lg group-hover/skill:text-blue-400 transition-colors duration-200 mb-2">
-                            {skill.name}
-                          </h4>
-                          <p className="text-gray-400 text-sm">{skill.desc}</p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  <div className="space-y-3">
+                    {category.skills.map((skill, skillIndex) => (
+                      <div
+                        key={skillIndex}
+                        className="group/skill pl-4 border-l-2 border-white/20 hover:border-blue-400/70 transition-all duration-300"
+                      >
+                        <h4 className="text-white font-semibold text-base group-hover/skill:text-blue-400 transition-colors duration-200 mb-1">
+                          {skill.name}
+                        </h4>
+                        <p className="text-gray-400 text-sm">{skill.desc}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
