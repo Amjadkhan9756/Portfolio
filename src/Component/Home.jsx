@@ -42,7 +42,7 @@ function Home() {
       skills: [
         { name: "HTML5 & CSS3", desc: "Modern web layouts & styling" },
         { name: "JavaScript & TypeScript", desc: "ES6+ programming" },
-        { name: "React.js & Next.js", desc: "Frontend frameworks" },
+        { name: "React.js", desc: "Frontend frameworks" },
         { name: "Redux Toolkit", desc: "State management" },
         { name: "Tailwind CSS", desc: "Utility-first styling" },
         { name: "Node.js & Express.js", desc: "Backend development" },
@@ -207,7 +207,6 @@ function Home() {
                           "Express.js",
                           "MongoDB",
                           "React.js",
-                          "Next.js",
                           "TypeScript",
                         ].map((skill, index) => (
                           <span
@@ -370,7 +369,6 @@ function Home() {
                     "MongoDB",
                     "Express.js",
                     "React.js",
-                    "Next.js",
                     "Node.js",
                     "JavaScript",
                     "TypeScript",
