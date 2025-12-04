@@ -206,7 +206,7 @@ function Home() {
                           "Node.js",
                           "Express.js",
                           "MongoDB",
-                          "React.js",
+                          "Next.js",
                           "JavaScript",
                         ].map((skill, index) => (
                           <span
