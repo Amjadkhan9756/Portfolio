@@ -302,7 +302,7 @@ function Home() {
                 Hi, I am Amjad, a Full-stack Developer passionate about creating
                 and delivering projects that make a real-world impact. I
                 specialize in full-stack development with MERN Stack and
-                Express.js, using TypeScript for type safety. I have experience
+                Express.js, also using Next.js. I have experience
                 with modern web technologies and tools. Have an idea, want to
                 collaborate, or have an internship opportunity? Feel free to
                 message me! I'm always excited to connect and work on great
@@ -322,7 +322,10 @@ function Home() {
             {/* Skills Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {skillCategories.map((category, index) => (
-                <div key={index} className="group bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2">
+                <div
+                  key={index}
+                  className="group bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2"
+                >
                   {/* Category Header */}
                   <div className="flex items-start gap-4 mb-6">
                     <div
