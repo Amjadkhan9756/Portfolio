@@ -191,7 +191,7 @@ function Home() {
                           &
                           <span className="text-cyan-400 font-semibold">
                             {" "}
-                            MERN Expert
+                           (MERN)
                           </span>
                         </h2>
                         <p className="text-gray-400 text-lg">

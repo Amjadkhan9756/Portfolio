@@ -2,18 +2,18 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="bg-gradient-to-r from-pink-400 to-purple-500 shadow-md">
+    <nav className="bg-gray-100 shadow-md">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo */}
-        <h1 className="text-white font-bold text-xl">Amjad khan</h1>
+        <h1 className="text-gray-900 font-bold text-xl">Amjad khan</h1>
         
         {/* Links */}
         <ul className="flex space-x-6">
           <li>
             <Link
               to="/"
-              className="text-white font-medium hover:text-yellow-300 transition duration-300"
+              className="text-gray-700 font-medium hover:text-purple-600 transition duration-300"
             >
               Home
             </Link>
@@ -22,7 +22,7 @@ const Navbar = () => {
           <li>
             <Link
               to="/Project"
-              className="text-white font-medium hover:text-yellow-300 transition duration-300"
+              className="text-gray-700 font-medium hover:text-purple-600 transition duration-300"
             >
               Project in Detail
             </Link>
