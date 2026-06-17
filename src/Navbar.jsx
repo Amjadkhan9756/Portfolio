@@ -10,19 +10,19 @@ function Navbar() {
                         <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="/">About</a>
+                        <a href="About">About</a>
                     </li>
                     <li>
-                        <a href="/">Skill</a>
+                        <a href="/Skill">Skill</a>
                     </li>
                     <li>
-                        <a href="/">Project</a>
+                        <a href="/Project">Project</a>
                     </li>
                     <li>
-                        <a href="/">Experience</a>
+                        <a href="/Experience">Experience</a>
                     </li>
                     <li>
-                        <a href="/">Contact</a>
+                        <a href="/Contact">Contact</a>
                     </li>
                 </ul>
             </nav>
