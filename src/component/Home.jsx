@@ -73,11 +73,7 @@ const data = {
       institute: "Bharat Inter College, Bhojipura, Bareilly, UP",
       year: "2022",
     },
-    {
-      degree: "Secondary Education (UP Board)",
-      institute: "Bharat Inter College, Bhojipura, Bareilly, UP",
-      year: "2020",
-    },
+    
   ],
 };
 
