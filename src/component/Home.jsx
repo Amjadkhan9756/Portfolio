@@ -50,6 +50,7 @@ const data = {
       desc: "A LinkedIn-style social blog platform with custom profile bios, education tracking, professional histories, and mutual connection requests. Features secure bcrypt session states and Multer media management for profile pictures and post media.",
       tech: ["Next.js 15", "React 19", "Redux Toolkit", "Bootstrap 5", "Node.js", "Express 5", "MongoDB", "Multer", "Bcrypt"],
       repo: "#",
+      live: "https://proconnect-sandy.vercel.app/",
     },
   ],
   certifications: [
@@ -288,7 +289,32 @@ function Projects() {
             <div style={styles.techStack}>
               {p.tech.map((t) => <span key={t} style={styles.tech}>{t}</span>)}
             </div>
-            <a href={p.repo} style={{ fontSize: 14, color: "#06b6d4", textDecoration: "none", fontWeight: 500, transition: "all 0.3s ease" }} onMouseEnter={(e) => { e.target.style.color = "#0ea5e9"; }} onMouseLeave={(e) => { e.target.style.color = "#06b6d4"; }}>⌥ View Repository →</a>
+            <div style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
+              {p.live && (
+                <a
+                  href={p.live}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ fontSize: 14, color: "#06b6d4", textDecoration: "none", fontWeight: 500, transition: "all 0.3s ease" }}
+                  onMouseEnter={(e) => { e.target.style.color = "#0ea5e9"; }}
+                  onMouseLeave={(e) => { e.target.style.color = "#06b6d4"; }}
+                >
+                  ▶ Live Demo →
+                </a>
+              )}
+              {p.repo && p.repo !== "#" && (
+                <a
+                  href={p.repo}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ fontSize: 14, color: "#a78bfa", textDecoration: "none", fontWeight: 500, transition: "all 0.3s ease" }}
+                  onMouseEnter={(e) => { e.target.style.color = "#c4b5fd"; }}
+                  onMouseLeave={(e) => { e.target.style.color = "#a78bfa"; }}
+                >
+                  ⌥ View Repository →
+                </a>
+              )}
+            </div>
           </div>
         ))}
       </div>
