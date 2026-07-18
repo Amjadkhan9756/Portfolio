@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import * as THREE from "three";
 
 const data = {
   name: "Amjad Khan",
@@ -11,26 +12,10 @@ const data = {
   summary:
     "Computer Science student (B.Tech, Expected 2027) specializing in full-stack MERN development. I build modular platforms with React.js, Next.js, and Node.js — skilled in optimized state management, database design, secure JWT authentication, and integrating cloud technologies like AWS and Docker for streamlined deployment workflows.",
   skills: [
-    {
-      label: "Languages",
-      items: ["JavaScript", "TypeScript", "Java"],
-      primary: true,
-    },
-    {
-      label: "Frontend",
-      items: ["React.js", "Next.js", "Redux", "Tailwind CSS", "Bootstrap 5", "Material UI", "HTML", "CSS"],
-      primary: true,
-    },
-    {
-      label: "Backend",
-      items: ["Node.js", "Express.js", "MongoDB", "REST APIs"],
-      primary: true,
-    },
-    {
-      label: "DevOps & Tools",
-      items: ["Git", "GitHub", "Docker", "AWS", "CI/CD", "DBMS"],
-      primary: false,
-    },
+    { label: "Languages", items: ["JavaScript", "TypeScript", "Java"], primary: true },
+    { label: "Frontend", items: ["React.js", "Next.js", "Redux", "Tailwind CSS", "Bootstrap 5", "Material UI", "HTML", "CSS"], primary: true },
+    { label: "Backend", items: ["Node.js", "Express.js", "MongoDB", "REST APIs"], primary: true },
+    { label: "DevOps & Tools", items: ["Git", "GitHub", "Docker", "AWS", "CI/CD", "DBMS"], primary: false },
   ],
   experience: [
     {
@@ -38,6 +23,7 @@ const data = {
       company: "Academor",
       type: "Remote",
       period: "Aug 2023 – Sep 2023",
+      hash: "a3f9c1e",
       bullets: [
         "Engineered responsive full-stack web modules using React.js and Node.js, boosting rendering speeds by 25%.",
         "Developed 10+ reusable UI components and structured backend API routes to scale data throughput by 40%.",
@@ -47,6 +33,7 @@ const data = {
   projects: [
     {
       name: "SocialMediaSite",
+      file: "SocialMediaSite.jsx",
       desc: "A LinkedIn-style social blog platform with custom profile bios, education tracking, professional histories, and mutual connection requests. Features secure bcrypt session states and Multer media management for profile pictures and post media.",
       tech: ["Next.js 15", "React 19", "Redux Toolkit", "Bootstrap 5", "Node.js", "Express 5", "MongoDB", "Multer", "Bcrypt"],
       repo: "#",
@@ -64,142 +51,448 @@ const data = {
     "Optimized codebase workflows for personal deployments, reducing cloud asset overheads.",
   ],
   education: [
-    {
-      degree: "B.Tech in Computer Science & Engineering",
-      institute: "Shri Ram Murti Smarak College of Engineering & Technology, Bareilly",
-      year: "Expected 2027",
-    },
-    {
-      degree: "Senior Secondary Education (UP Board)",
-      institute: "Bharat Inter College, Bhojipura, Bareilly, UP",
-      year: "2022",
-    },
-    {
-      degree: "Secondary Education (UP Board)",
-      institute: "Bharat Inter College, Bhojipura, Bareilly, UP",
-      year: "2020",
-    },
+    { degree: "B.Tech in Computer Science & Engineering", institute: "Shri Ram Murti Smarak College of Engineering & Technology, Bareilly", year: "Expected 2027", hash: "e21b4a0" },
+    { degree: "Senior Secondary Education (UP Board)", institute: "Bharat Inter College, Bhojipura, Bareilly, UP", year: "2022", hash: "9c04d7f" },
+    { degree: "Secondary Education (UP Board)", institute: "Bharat Inter College, Bhojipura, Bareilly, UP", year: "2020", hash: "1d6a2e8" },
   ],
 };
 
-const NAV_LINKS = ["Home", "About", "Skills", "Projects", "Experience", "Contact"];
+const TABS = [
+  { key: "Home", file: "home.jsx" },
+  { key: "About", file: "about.md" },
+  { key: "Skills", file: "stack.json" },
+  { key: "Projects", file: "projects.jsx" },
+  { key: "Experience", file: "log.txt" },
+  { key: "Contact", file: "contact.sh" },
+];
 
-const styles = {
-  // Layout
-  page: { fontFamily: "'Poppins', sans-serif", color: "#e2e8f0", background: "#0f172a", minHeight: "100vh", position: "relative" },
-  // Navbar
-  nav: { display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 2rem", height: 70, background: "rgba(15, 23, 42, 0.5)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(6, 182, 212, 0.2)", position: "sticky", top: 0, zIndex: 100, boxShadow: "0 8px 32px rgba(0, 0, 0, 0.4)" },
-  navName: { fontSize: 22, fontWeight: 800, background: "linear-gradient(135deg, #06b6d4, #0ea5e9, #a78bfa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", letterSpacing: "-1px", cursor: "pointer" },
-  navLinks: { display: "flex", gap: 4, listStyle: "none", margin: 0, padding: 0, flexWrap: "wrap" },
-  navLink: (active) => ({
-    fontSize: 14, color: active ? "#06b6d4" : "#cbd5e1", textDecoration: "none",
-    padding: "8px 12px", borderRadius: 8, background: active ? "rgba(6, 182, 212, 0.1)" : "transparent",
-    cursor: "pointer", border: "none", fontFamily: "inherit", transition: "all 0.3s ease",
-  }),
-  // Sections
-  section: { padding: "4rem 2rem", borderBottom: "1px solid rgba(6, 182, 212, 0.1)", maxWidth: 1000, margin: "0 auto", position: "relative", zIndex: 2 },
-  sectionTitle: { fontSize: 28, fontWeight: 700, marginBottom: "2rem", display: "flex", alignItems: "center", gap: 15, color: "#f8fafc", background: "linear-gradient(135deg, #06b6d4, #0ea5e9)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" },
-  // Hero
-  hero: { background: "linear-gradient(135deg, rgba(15, 23, 42, 0.4) 0%, rgba(26, 58, 82, 0.3) 50%, rgba(45, 27, 105, 0.2) 100%)", backdropFilter: "blur(10px)", textAlign: "center", padding: "5rem 2rem 4rem", borderBottom: "1px solid rgba(6, 182, 212, 0.1)", position: "relative", zIndex: 2 },
-  heroAvatar: { width: 120, height: 120, borderRadius: "50%", background: "linear-gradient(135deg, #06b6d4, #0ea5e9)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 48, fontWeight: 700, color: "#0f172a", margin: "0 auto 2rem", boxShadow: "0 20px 50px rgba(6, 182, 212, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.2)" },
-  heroH1: { fontSize: 48, fontWeight: 800, marginBottom: 12, letterSpacing: "-2px", color: "#f8fafc", textShadow: "0 4px 12px rgba(0, 0, 0, 0.3)" },
-  heroRole: { fontSize: 18, background: "linear-gradient(135deg, #06b6d4, #a78bfa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", marginBottom: 16, fontWeight: 600 },
-  heroSummary: { fontSize: 15, color: "#cbd5e1", maxWidth: 620, margin: "0 auto 2rem", lineHeight: 1.8 },
-  heroLinks: { display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginBottom: "2rem" },
-  heroLink: { display: "flex", alignItems: "center", gap: 8, fontSize: 14, padding: "10px 18px", borderRadius: 10, border: "1px solid rgba(6, 182, 212, 0.4)", color: "#cbd5e1", textDecoration: "none", background: "rgba(6, 182, 212, 0.08)", backdropFilter: "blur(10px)", transition: "all 0.3s ease", cursor: "pointer" },
-  // Skills
-  skillsGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 },
-  skillGroup: { background: "rgba(30, 41, 59, 0.6)", border: "1px solid rgba(6, 182, 212, 0.2)", borderRadius: 14, padding: "1.5rem", backdropFilter: "blur(10px)", transition: "all 0.3s ease", cursor: "pointer" },
-  skillGroupLabel: { fontSize: 12, fontWeight: 700, color: "#06b6d4", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 },
-  skillTags: { display: "flex", flexWrap: "wrap", gap: 8 },
-  tag: (primary) => ({ fontSize: 13, padding: "6px 12px", borderRadius: 20, background: primary ? "rgba(6, 182, 212, 0.15)" : "rgba(167, 139, 250, 0.1)", color: primary ? "#06b6d4" : "#a78bfa", border: primary ? "1px solid rgba(6, 182, 212, 0.3)" : "1px solid rgba(167, 139, 250, 0.2)", transition: "all 0.3s ease" }),
-  // Cards
-  card: { background: "rgba(30, 41, 59, 0.6)", border: "1px solid rgba(6, 182, 212, 0.2)", borderRadius: 14, padding: "1.5rem", marginBottom: 16, backdropFilter: "blur(10px)", transition: "all 0.3s ease" },
-  cardHeader: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12, flexWrap: "wrap", gap: 12 },
-  cardTitle: { fontSize: 17, fontWeight: 700, color: "#f8fafc" },
-  cardSub: { fontSize: 14, color: "#94a3b8", marginBottom: 8 },
-  dateBadge: { fontSize: 12, background: "rgba(6, 182, 212, 0.15)", color: "#06b6d4", borderRadius: 20, padding: "4px 12px", whiteSpace: "nowrap", border: "1px solid rgba(6, 182, 212, 0.3)" },
-  bullets: { listStyle: "none", margin: 0, padding: 0 },
-  bullet: { fontSize: 14, color: "#cbd5e1", padding: "6px 0 6px 20px", position: "relative", lineHeight: 1.8 },
-  // Project
-  projectCard: { background: "rgba(30, 41, 59, 0.6)", border: "1px solid rgba(6, 182, 212, 0.2)", borderRadius: 14, padding: "1.5rem", backdropFilter: "blur(10px)", transition: "all 0.3s ease" },
-  projectTitle: { fontSize: 17, fontWeight: 700, marginBottom: 8, color: "#f8fafc" },
-  projectDesc: { fontSize: 14, color: "#cbd5e1", lineHeight: 1.8, marginBottom: 14 },
-  techStack: { display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 14 },
-  tech: { fontSize: 12, padding: "4px 10px", borderRadius: 8, background: "rgba(167, 139, 250, 0.1)", color: "#a78bfa", border: "1px solid rgba(167, 139, 250, 0.2)" },
-  // Certs
-  certGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 },
-  certItem: { background: "rgba(30, 41, 59, 0.6)", border: "1px solid rgba(6, 182, 212, 0.2)", borderRadius: 14, padding: "1.25rem", display: "flex", alignItems: "flex-start", gap: 12, backdropFilter: "blur(10px)" },
-  // Achievements
-  achGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 },
-  achCard: { background: "rgba(30, 41, 59, 0.6)", borderRadius: 12, padding: "1.25rem", display: "flex", alignItems: "flex-start", gap: 12, border: "1px solid rgba(167, 139, 250, 0.2)", backdropFilter: "blur(10px)" },
-  achText: { fontSize: 14, color: "#cbd5e1", lineHeight: 1.7 },
-  // Education
-  eduItem: { background: "rgba(30, 41, 59, 0.6)", border: "1px solid rgba(6, 182, 212, 0.2)", borderRadius: 14, padding: "1.25rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, marginBottom: 12, backdropFilter: "blur(10px)" },
-  // Contact
-  contactGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 },
-  contactItem: { background: "rgba(30, 41, 59, 0.6)", border: "1px solid rgba(6, 182, 212, 0.2)", borderRadius: 14, padding: "1.25rem", display: "flex", alignItems: "center", gap: 14, backdropFilter: "blur(10px)" },
-  // Footer
-  footer: { textAlign: "center", padding: "2.5rem", fontSize: 14, color: "#64748b", borderTop: "1px solid rgba(6, 182, 212, 0.1)", position: "relative", zIndex: 2 },
+/* ---------------------------------- theme ---------------------------------- */
+
+const COLORS = {
+  bg: "#0a0c10",
+  bgElevated: "#0d1016",
+  surface: "#12151c",
+  surfaceHover: "#161a22",
+  border: "rgba(255,255,255,0.08)",
+  borderStrong: "rgba(255,255,255,0.16)",
+  accent: "#ff7a45",
+  accentSoft: "rgba(255,122,69,0.12)",
+  accentBorder: "rgba(255,122,69,0.35)",
+  mint: "#3ddc97",
+  mintSoft: "rgba(61,220,151,0.12)",
+  mintBorder: "rgba(61,220,151,0.35)",
+  text: "#e9e8e3",
+  textDim: "#8b93a1",
+  textFaint: "#565f6b",
 };
 
-function Divider() {
-  return <span style={{ flex: 1, height: 2, background: "linear-gradient(90deg, rgba(6, 182, 212, 0.5), transparent)", display: "inline-block", marginLeft: 16, borderRadius: 10 }} />;
+function useGoogleFonts() {
+  useEffect(() => {
+    const id = "portfolio-fonts";
+    if (document.getElementById(id)) return;
+    const link = document.createElement("link");
+    link.id = id;
+    link.rel = "stylesheet";
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap";
+    document.head.appendChild(link);
+  }, []);
 }
 
-function Navbar({ active, onNav }) {
+/* --------------------------- 3D tilt hook (CSS) ----------------------------- */
+
+function useTilt(strength = 10) {
+  const ref = useRef(null);
+  const onMove = (e) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    el.style.transform = `perspective(900px) rotateX(${(-py * strength).toFixed(2)}deg) rotateY(${(px * strength).toFixed(2)}deg) translateZ(6px)`;
+    el.style.setProperty("--glow-x", `${(px + 0.5) * 100}%`);
+    el.style.setProperty("--glow-y", `${(py + 0.5) * 100}%`);
+  };
+  const onLeave = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.transform = `perspective(900px) rotateX(0deg) rotateY(0deg) translateZ(0px)`;
+  };
+  return { ref, onMouseMove: onMove, onMouseLeave: onLeave };
+}
+
+function TiltCard({ children, style, strength, className }) {
+  const tilt = useTilt(strength);
   return (
-    <nav style={styles.nav}>
-      <div style={styles.navName}>Amjad</div>
-      <ul style={styles.navLinks}>
-        {NAV_LINKS.map((link) => (
-          <li key={link}>
-            <button 
-              style={styles.navLink(active === link)} 
-              onClick={() => onNav(link)}
-              onMouseEnter={(e) => { e.target.style.color = "#06b6d4"; e.target.style.background = "rgba(6, 182, 212, 0.1)"; }}
-              onMouseLeave={(e) => { e.target.style.color = active === link ? "#06b6d4" : "#cbd5e1"; e.target.style.background = active === link ? "rgba(6, 182, 212, 0.1)" : "transparent"; }}
-            >
-              {link}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div
+      ref={tilt.ref}
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
+      className={`tilt-card ${className || ""}`}
+      style={style}
+    >
+      {children}
+    </div>
   );
 }
 
+/* ------------------------- Three.js hub/spoke graph ------------------------- */
+
+function StackGraph3D() {
+  const mountRef = useRef(null);
+
+  useEffect(() => {
+    const mount = mountRef.current;
+    if (!mount) return;
+
+    const nodes = [
+      { label: "React", color: 0x61dafb },
+      { label: "Next.js", color: 0xe9e8e3 },
+      { label: "Node.js", color: 0x8cc84b },
+      { label: "Express", color: 0x9aa5b1 },
+      { label: "MongoDB", color: 0x3ddc97 },
+      { label: "Redux", color: 0x764abc },
+      { label: "Docker", color: 0x2496ed },
+      { label: "AWS", color: 0xff9900 },
+    ];
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x0a0c10, 0.035);
+
+    const camera = new THREE.PerspectiveCamera(45, mount.clientWidth / mount.clientHeight, 0.1, 100);
+    camera.position.set(0, 0.6, 9);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(mount.clientWidth, mount.clientHeight);
+    mount.appendChild(renderer.domElement);
+
+    const group = new THREE.Group();
+    scene.add(group);
+
+    // core node
+    const coreGeo = new THREE.IcosahedronGeometry(0.55, 1);
+    const coreMat = new THREE.MeshBasicMaterial({ color: 0xff7a45, wireframe: true });
+    const core = new THREE.Mesh(coreGeo, coreMat);
+    group.add(core);
+
+    const coreGlowGeo = new THREE.IcosahedronGeometry(0.62, 1);
+    const coreGlowMat = new THREE.MeshBasicMaterial({ color: 0xff7a45, transparent: true, opacity: 0.08 });
+    group.add(new THREE.Mesh(coreGlowGeo, coreGlowMat));
+
+    const radius = 3.1;
+    const satellites = [];
+    const lineMat = new THREE.LineBasicMaterial({ color: 0x565f6b, transparent: true, opacity: 0.5 });
+
+    nodes.forEach((n, i) => {
+      const phi = Math.acos(1 - (2 * (i + 0.5)) / nodes.length);
+      const theta = Math.PI * (1 + Math.sqrt(5)) * (i + 0.5);
+      const x = radius * Math.cos(theta) * Math.sin(phi);
+      const y = radius * Math.sin(theta) * Math.sin(phi) * 0.8;
+      const z = radius * Math.cos(phi);
+
+      const geo = new THREE.SphereGeometry(0.14, 16, 16);
+      const mat = new THREE.MeshBasicMaterial({ color: n.color });
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.position.set(x, y, z);
+      group.add(mesh);
+      satellites.push(mesh);
+
+      const points = [new THREE.Vector3(0, 0, 0), mesh.position.clone()];
+      const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+      group.add(new THREE.Line(lineGeo, lineMat));
+    });
+
+    // faint outer wireframe shell for depth
+    const shellGeo = new THREE.IcosahedronGeometry(4.1, 1);
+    const shellMat = new THREE.MeshBasicMaterial({ color: 0x1c2028, wireframe: true, transparent: true, opacity: 0.35 });
+    group.add(new THREE.Mesh(shellGeo, shellMat));
+
+    let raf;
+    let mouseX = 0;
+    let mouseY = 0;
+    const onPointerMove = (e) => {
+      const r = mount.getBoundingClientRect();
+      mouseX = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      mouseY = ((e.clientY - r.top) / r.height - 0.5) * 2;
+    };
+    mount.addEventListener("mousemove", onPointerMove);
+
+    const clock = new THREE.Clock();
+    const animate = () => {
+      const t = clock.getElapsedTime();
+      group.rotation.y = t * 0.18 + mouseX * 0.4;
+      group.rotation.x = Math.sin(t * 0.15) * 0.1 + mouseY * 0.25;
+      core.rotation.y = t * 0.4;
+      core.rotation.x = t * 0.25;
+      satellites.forEach((s, i) => {
+        s.position.y += Math.sin(t * 1.4 + i) * 0.0006;
+      });
+      renderer.render(scene, camera);
+      raf = requestAnimationFrame(animate);
+    };
+    animate();
+
+    const onResize = () => {
+      if (!mount) return;
+      camera.aspect = mount.clientWidth / mount.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(mount.clientWidth, mount.clientHeight);
+    };
+    const ro = new ResizeObserver(onResize);
+    ro.observe(mount);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      mount.removeEventListener("mousemove", onPointerMove);
+      mount.removeChild(renderer.domElement);
+      renderer.dispose();
+    };
+  }, []);
+
+  return <div ref={mountRef} style={{ width: "100%", height: "100%", minHeight: 340 }} />;
+}
+
+/* --------------------------------- pieces ----------------------------------- */
+
+function Dot({ color }) {
+  return <span style={{ width: 11, height: 11, borderRadius: "50%", background: color, display: "inline-block" }} />;
+}
+
+function IdeChrome({ active, onNav }) {
+  return (
+    <div
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+        background: "rgba(10,12,16,0.85)",
+        backdropFilter: "blur(16px)",
+        borderBottom: `1px solid ${COLORS.border}`,
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 18px", borderBottom: `1px solid ${COLORS.border}` }}>
+        <Dot color="#ff5f57" />
+        <Dot color="#febc2e" />
+        <Dot color="#28c840" />
+        <span
+          style={{
+            marginLeft: 14,
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 12.5,
+            color: COLORS.textFaint,
+            letterSpacing: 0.3,
+          }}
+        >
+          ~/portfolio/amjad-khan — zsh
+        </span>
+      </div>
+      <div style={{ display: "flex", overflowX: "auto" }}>
+        {TABS.map((t) => {
+          const isActive = active === t.key;
+          return (
+            <button
+              key={t.key}
+              onClick={() => onNav(t.key)}
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 13,
+                whiteSpace: "nowrap",
+                padding: "10px 20px",
+                background: isActive ? COLORS.bg : "transparent",
+                color: isActive ? COLORS.accent : COLORS.textDim,
+                border: "none",
+                borderRight: `1px solid ${COLORS.border}`,
+                borderTop: isActive ? `2px solid ${COLORS.accent}` : "2px solid transparent",
+                cursor: "pointer",
+                transition: "color 0.2s ease, background 0.2s ease",
+              }}
+              onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.color = COLORS.text; }}
+              onMouseLeave={(e) => { if (!isActive) e.currentTarget.style.color = COLORS.textDim; }}
+            >
+              {isActive ? "● " : ""}{t.file}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function LineNo({ n }) {
+  return (
+    <span style={{ color: COLORS.textFaint, width: 26, display: "inline-block", userSelect: "none", fontSize: 12.5 }}>
+      {n}
+    </span>
+  );
+}
+
+function SectionHeading({ n, label }) {
+  return (
+    <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: "2rem" }}>
+      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: COLORS.accent }}>{n}</span>
+      <h2
+        style={{
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontSize: 30,
+          fontWeight: 700,
+          color: COLORS.text,
+          margin: 0,
+        }}
+      >
+        {label}
+      </h2>
+      <span style={{ flex: 1, height: 1, background: COLORS.border }} />
+    </div>
+  );
+}
+
+function Tag({ children, tone = "accent" }) {
+  const map = {
+    accent: { color: COLORS.accent, bg: COLORS.accentSoft, border: COLORS.accentBorder },
+    mint: { color: COLORS.mint, bg: COLORS.mintSoft, border: COLORS.mintBorder },
+    dim: { color: COLORS.textDim, bg: "rgba(255,255,255,0.04)", border: COLORS.border },
+  }[tone];
+  return (
+    <span
+      style={{
+        fontFamily: "'JetBrains Mono', monospace",
+        fontSize: 12.5,
+        color: map.color,
+        background: map.bg,
+        border: `1px solid ${map.border}`,
+        borderRadius: 6,
+        padding: "4px 10px",
+        display: "inline-block",
+      }}
+    >
+      {children}
+    </span>
+  );
+}
+
+/* --------------------------------- sections ---------------------------------- */
+
 function Home({ onNav }) {
   return (
-    <div style={styles.hero} id="home">
-      <div style={styles.heroAvatar}>AK</div>
-      <h1 style={styles.heroH1}>{data.name}</h1>
-      <p style={styles.heroRole}>{data.role}</p>
-      <p style={styles.heroSummary}>{data.summary}</p>
-      <div style={styles.heroLinks}>
-        <a href={`mailto:${data.email}`} style={styles.heroLink}>✉ Email</a>
-        <a href={data.linkedin} target="_blank" rel="noreferrer" style={styles.heroLink}>in LinkedIn</a>
-        <a href={data.github} target="_blank" rel="noreferrer" style={styles.heroLink}>⌥ GitHub</a>
-        <a href={data.leetcode} target="_blank" rel="noreferrer" style={styles.heroLink}>⌨ LeetCode</a>
-        <a href={`tel:${data.phone}`} style={styles.heroLink}>✆ {data.phone}</a>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1.1fr 1fr",
+        gap: 40,
+        alignItems: "center",
+        maxWidth: 1180,
+        margin: "0 auto",
+        padding: "4.5rem 2rem 3.5rem",
+      }}
+      className="hero-grid"
+    >
+      <div>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: COLORS.mint, marginBottom: 18 }}>
+          <LineNo n={1} /><span style={{ color: COLORS.textFaint }}>{"// "}</span>whoami
+        </div>
+        <h1
+          style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: "clamp(2.4rem, 5vw, 3.6rem)",
+            fontWeight: 700,
+            lineHeight: 1.08,
+            color: COLORS.text,
+            margin: "0 0 8px",
+            letterSpacing: "-0.02em",
+          }}
+        >
+          {data.name}
+        </h1>
+        <p
+          style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 15,
+            color: COLORS.accent,
+            margin: "0 0 22px",
+          }}
+        >
+          <LineNo n={2} />{data.role}
+        </p>
+        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 15.5, color: COLORS.textDim, lineHeight: 1.85, maxWidth: 560, margin: "0 0 30px" }}>
+          {data.summary}
+        </p>
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 34 }}>
+          <button
+            onClick={() => onNav("Projects")}
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 13.5,
+              background: COLORS.accent,
+              color: "#0a0c10",
+              border: "none",
+              padding: "12px 22px",
+              borderRadius: 8,
+              fontWeight: 600,
+              cursor: "pointer",
+              boxShadow: "0 8px 24px rgba(255,122,69,0.25)",
+              transition: "transform 0.2s ease",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+          >
+            ./view-projects
+          </button>
+          <button
+            onClick={() => onNav("Contact")}
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 13.5,
+              background: "transparent",
+              color: COLORS.text,
+              border: `1px solid ${COLORS.borderStrong}`,
+              padding: "12px 22px",
+              borderRadius: 8,
+              cursor: "pointer",
+              transition: "border-color 0.2s ease, color 0.2s ease",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = COLORS.mintBorder; e.currentTarget.style.color = COLORS.mint; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = COLORS.borderStrong; e.currentTarget.style.color = COLORS.text; }}
+          >
+            git contact --show
+          </button>
+        </div>
+        <div style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
+          {[
+            ["Email", `mailto:${data.email}`],
+            ["LinkedIn", data.linkedin],
+            ["GitHub", data.github],
+            ["LeetCode", data.leetcode],
+          ].map(([label, href]) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12.5, color: COLORS.textDim, textDecoration: "none", borderBottom: `1px dashed ${COLORS.border}` }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = COLORS.text)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = COLORS.textDim)}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
       </div>
-      <div style={{ marginTop: "2.5rem", display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-        <button
-          onClick={() => onNav("Projects")}
-          style={{ background: "linear-gradient(135deg, #06b6d4, #0ea5e9)", color: "#fff", border: "none", padding: "12px 32px", borderRadius: 10, fontSize: 15, fontWeight: 600, cursor: "pointer", transition: "all 0.3s ease", boxShadow: "0 8px 24px rgba(6, 182, 212, 0.3)" }}
-          onMouseEnter={(e) => { e.target.style.transform = "translateY(-3px)"; e.target.style.boxShadow = "0 12px 32px rgba(6, 182, 212, 0.5)"; }}
-          onMouseLeave={(e) => { e.target.style.transform = "translateY(0)"; e.target.style.boxShadow = "0 8px 24px rgba(6, 182, 212, 0.3)"; }}
-        >
-          View Projects
-        </button>
-        <button
-          onClick={() => onNav("Contact")}
-          style={{ background: "transparent", color: "#06b6d4", border: "2px solid rgba(6, 182, 212, 0.5)", padding: "10px 30px", borderRadius: 10, fontSize: 15, fontWeight: 600, cursor: "pointer", transition: "all 0.3s ease", backdropFilter: "blur(10px)" }}
-          onMouseEnter={(e) => { e.target.style.background = "rgba(6, 182, 212, 0.1)"; e.target.style.borderColor = "rgba(6, 182, 212, 1)"; }}
-          onMouseLeave={(e) => { e.target.style.background = "transparent"; e.target.style.borderColor = "rgba(6, 182, 212, 0.5)"; }}
-        >
-          Contact Me
-        </button>
+
+      <div
+        style={{
+          position: "relative",
+          borderRadius: 16,
+          border: `1px solid ${COLORS.border}`,
+          background: "radial-gradient(circle at 50% 40%, rgba(255,122,69,0.06), transparent 60%), #0d1016",
+          overflow: "hidden",
+        }}
+      >
+        <div style={{ position: "absolute", top: 14, left: 16, fontFamily: "'JetBrains Mono', monospace", fontSize: 11.5, color: COLORS.textFaint, zIndex: 2 }}>
+          stack.render(mern) <span style={{ color: COLORS.mint }}>// drag to orbit</span>
+        </div>
+        <StackGraph3D />
       </div>
     </div>
   );
@@ -207,55 +500,58 @@ function Home({ onNav }) {
 
 function About() {
   return (
-    <div style={styles.section} id="about">
-      <h2 style={styles.sectionTitle}>About <Divider /></h2>
-      <p style={{ fontSize: 15, color: "#cbd5e1", lineHeight: 1.9, maxWidth: 720 }}>{data.summary}</p>
+    <div style={{ maxWidth: 1180, margin: "0 auto", padding: "3.5rem 2rem" }}>
+      <SectionHeading n="01" label="About" />
+      <div
+        style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 14,
+          color: COLORS.textDim,
+          background: COLORS.surface,
+          border: `1px solid ${COLORS.border}`,
+          borderRadius: 12,
+          padding: "1.8rem 2rem",
+          maxWidth: 780,
+          lineHeight: 2,
+        }}
+      >
+        <div style={{ color: COLORS.textFaint }}>/**</div>
+        <div style={{ color: COLORS.textFaint }}> * @file about.md</div>
+        <div style={{ color: COLORS.textFaint }}> */</div>
+        <p style={{ fontFamily: "'Inter', sans-serif", color: COLORS.text, fontSize: 15.5, lineHeight: 1.9, marginTop: 14 }}>
+          {data.summary}
+        </p>
+      </div>
     </div>
   );
 }
 
 function Skills() {
   return (
-    <div style={styles.section} id="skills">
-      <h2 style={styles.sectionTitle}>Skills <Divider /></h2>
-      <div style={styles.skillsGrid}>
+    <div style={{ maxWidth: 1180, margin: "0 auto", padding: "3.5rem 2rem" }}>
+      <SectionHeading n="02" label="Skills" />
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: 18 }}>
         {data.skills.map((group) => (
-          <div 
-            key={group.label} 
-            style={styles.skillGroup}
-            onMouseEnter={(e) => { 
-              e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.5)"; 
-              e.currentTarget.style.background = "rgba(6, 182, 212, 0.1)";
-              e.currentTarget.style.boxShadow = "0 8px 24px rgba(6, 182, 212, 0.2)";
-              e.currentTarget.style.transform = "translateY(-4px)";
-            }}
-            onMouseLeave={(e) => { 
-              e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.2)"; 
-              e.currentTarget.style.background = "rgba(30, 41, 59, 0.6)";
-              e.currentTarget.style.boxShadow = "none";
-              e.currentTarget.style.transform = "translateY(0)";
+          <TiltCard
+            key={group.label}
+            strength={8}
+            style={{
+              background: COLORS.surface,
+              border: `1px solid ${COLORS.border}`,
+              borderRadius: 14,
+              padding: "1.5rem",
             }}
           >
-            <p style={styles.skillGroupLabel}>{group.label}</p>
-            <div style={styles.skillTags}>
+            <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11.5, color: group.primary ? COLORS.accent : COLORS.mint, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>
+              "{group.label}": [
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 6 }}>
               {group.items.map((item) => (
-                <span 
-                  key={item} 
-                  style={styles.tag(group.primary)}
-                  onMouseEnter={(e) => {
-                    e.target.style.transform = "scale(1.05)";
-                    e.target.style.background = group.primary ? "rgba(6, 182, 212, 0.25)" : "rgba(167, 139, 250, 0.2)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.transform = "scale(1)";
-                    e.target.style.background = group.primary ? "rgba(6, 182, 212, 0.15)" : "rgba(167, 139, 250, 0.1)";
-                  }}
-                >
-                  {item}
-                </span>
+                <Tag key={item} tone={group.primary ? "accent" : "mint"}>{item}</Tag>
               ))}
             </div>
-          </div>
+            <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11.5, color: COLORS.textFaint, marginTop: 10 }}>]</p>
+          </TiltCard>
         ))}
       </div>
     </div>
@@ -264,59 +560,74 @@ function Skills() {
 
 function Projects() {
   return (
-    <div style={styles.section} id="projects">
-      <h2 style={styles.sectionTitle}>Projects <Divider /></h2>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 18 }}>
+    <div style={{ maxWidth: 1180, margin: "0 auto", padding: "3.5rem 2rem" }}>
+      <SectionHeading n="03" label="Projects" />
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: 22 }}>
         {data.projects.map((p) => (
-          <div 
-            key={p.name} 
-            style={styles.projectCard}
-            onMouseEnter={(e) => { 
-              e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.5)"; 
-              e.currentTarget.style.background = "rgba(6, 182, 212, 0.08)";
-              e.currentTarget.style.boxShadow = "0 12px 32px rgba(6, 182, 212, 0.2)";
-              e.currentTarget.style.transform = "translateY(-6px)";
-            }}
-            onMouseLeave={(e) => { 
-              e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.2)"; 
-              e.currentTarget.style.background = "rgba(30, 41, 59, 0.6)";
-              e.currentTarget.style.boxShadow = "none";
-              e.currentTarget.style.transform = "translateY(0)";
+          <TiltCard
+            key={p.name}
+            strength={6}
+            style={{
+              background: COLORS.surface,
+              border: `1px solid ${COLORS.border}`,
+              borderRadius: 14,
+              overflow: "hidden",
             }}
           >
-            <p style={styles.projectTitle}>{p.name}</p>
-            <p style={styles.projectDesc}>{p.desc}</p>
-            <div style={styles.techStack}>
-              {p.tech.map((t) => <span key={t} style={styles.tech}>{t}</span>)}
+            <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 16px", borderBottom: `1px solid ${COLORS.border}`, background: COLORS.bgElevated }}>
+              <Dot color="#ff5f57" /><Dot color="#febc2e" /><Dot color="#28c840" />
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: COLORS.textFaint, marginLeft: 8 }}>{p.file}</span>
             </div>
-            <div style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
-              {p.live && (
-                <a
-                  href={p.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ fontSize: 14, color: "#06b6d4", textDecoration: "none", fontWeight: 500, transition: "all 0.3s ease" }}
-                  onMouseEnter={(e) => { e.target.style.color = "#0ea5e9"; }}
-                  onMouseLeave={(e) => { e.target.style.color = "#06b6d4"; }}
-                >
-                  ▶ Live Demo →
-                </a>
-              )}
-              {p.repo && p.repo !== "#" && (
-                <a
-                  href={p.repo}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{ fontSize: 14, color: "#a78bfa", textDecoration: "none", fontWeight: 500, transition: "all 0.3s ease" }}
-                  onMouseEnter={(e) => { e.target.style.color = "#c4b5fd"; }}
-                  onMouseLeave={(e) => { e.target.style.color = "#a78bfa"; }}
-                >
-                  ⌥ View Repository →
-                </a>
-              )}
+            <div style={{ padding: "1.6rem" }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 19, fontWeight: 700, color: COLORS.text, marginBottom: 10 }}>{p.name}</p>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14.5, color: COLORS.textDim, lineHeight: 1.85, marginBottom: 16 }}>{p.desc}</p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 18 }}>
+                {p.tech.map((t) => <Tag key={t} tone="dim">{t}</Tag>)}
+              </div>
+              <div style={{ display: "flex", gap: 20 }}>
+                {p.live && (
+                  <a href={p.live} target="_blank" rel="noreferrer" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: COLORS.accent, textDecoration: "none", fontWeight: 600 }}>
+                    ▶ live-demo →
+                  </a>
+                )}
+                {p.repo && p.repo !== "#" && (
+                  <a href={p.repo} target="_blank" rel="noreferrer" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: COLORS.mint, textDecoration: "none", fontWeight: 600 }}>
+                    ⌥ repository →
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
+          </TiltCard>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function LogEntry({ hash, title, meta, badge, bullets }) {
+  return (
+    <div style={{ display: "flex", gap: 18, marginBottom: 22 }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: 6 }}>
+        <span style={{ width: 10, height: 10, borderRadius: "50%", background: COLORS.accent, boxShadow: `0 0 0 4px ${COLORS.accentSoft}` }} />
+        <span style={{ width: 1, flex: 1, background: COLORS.border, marginTop: 6 }} />
+      </div>
+      <div style={{ flex: 1, paddingBottom: 6 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 6 }}>
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12.5, color: COLORS.mint }}>#{hash}</span>
+          <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 16.5, fontWeight: 700, color: COLORS.text, margin: 0 }}>{title}</p>
+          {badge && <Tag tone="accent">{badge}</Tag>}
+        </div>
+        {meta && <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13.5, color: COLORS.textDim, marginBottom: 8 }}>{meta}</p>}
+        {bullets && (
+          <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+            {bullets.map((b, i) => (
+              <li key={i} style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: COLORS.textDim, lineHeight: 1.8, paddingLeft: 18, position: "relative" }}>
+                <span style={{ position: "absolute", left: 0, color: COLORS.accent }}>›</span>
+                {b}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );
@@ -324,141 +635,80 @@ function Projects() {
 
 function Experience() {
   return (
-    <div style={styles.section} id="experience">
-      <h2 style={styles.sectionTitle}>Experience <Divider /></h2>
+    <div style={{ maxWidth: 1180, margin: "0 auto", padding: "3.5rem 2rem" }}>
+      <SectionHeading n="04" label="Experience" />
       {data.experience.map((exp) => (
-        <div 
-          key={exp.role} 
-          style={styles.card}
-          onMouseEnter={(e) => { 
-            e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.5)"; 
-            e.currentTarget.style.boxShadow = "0 8px 24px rgba(6, 182, 212, 0.15)";
-          }}
-          onMouseLeave={(e) => { 
-            e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.2)"; 
-            e.currentTarget.style.boxShadow = "none";
-          }}
-        >
-          <div style={styles.cardHeader}>
-            <div>
-              <p style={styles.cardTitle}>{exp.role}</p>
-              <p style={styles.cardSub}>{exp.company} · {exp.type}</p>
+        <LogEntry key={exp.role} hash={exp.hash} title={exp.role} meta={`${exp.company} · ${exp.type} · ${exp.period}`} bullets={exp.bullets} />
+      ))}
+
+      <div style={{ marginTop: "3rem" }}>
+        <SectionHeading n="04.1" label="Certifications" />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 14 }}>
+          {data.certifications.map((c) => (
+            <div key={c} style={{ background: COLORS.surface, border: `1px solid ${COLORS.border}`, borderRadius: 12, padding: "1.1rem 1.3rem", display: "flex", gap: 12, alignItems: "flex-start" }}>
+              <span style={{ color: COLORS.accent, fontSize: 15, fontFamily: "'JetBrains Mono', monospace" }}>✓</span>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13.5, color: COLORS.textDim, lineHeight: 1.6 }}>{c}</p>
             </div>
-            <span style={styles.dateBadge}>{exp.period}</span>
-          </div>
-          <ul style={styles.bullets}>
-            {exp.bullets.map((b, i) => (
-              <li key={i} style={styles.bullet}>
-                <span style={{ position: "absolute", left: 0, color: "#06b6d4", fontWeight: "bold" }}>→</span>
-                {b}
-              </li>
-            ))}
-          </ul>
+          ))}
         </div>
-      ))}
-
-      <h2 style={{ ...styles.sectionTitle, marginTop: "3rem" }}>Certifications <Divider /></h2>
-      <div style={styles.certGrid}>
-        {data.certifications.map((c) => (
-          <div 
-            key={c} 
-            style={styles.certItem}
-            onMouseEnter={(e) => { 
-              e.currentTarget.style.borderColor = "rgba(167, 139, 250, 0.5)"; 
-              e.currentTarget.style.boxShadow = "0 8px 24px rgba(167, 139, 250, 0.15)";
-            }}
-            onMouseLeave={(e) => { 
-              e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.2)"; 
-              e.currentTarget.style.boxShadow = "none";
-            }}
-          >
-            <span style={{ color: "#f59e0b", fontSize: 24, flexShrink: 0 }}>★</span>
-            <p style={{ fontSize: 14, fontWeight: 500, lineHeight: 1.6, color: "#cbd5e1" }}>{c}</p>
-          </div>
-        ))}
       </div>
 
-      <h2 style={{ ...styles.sectionTitle, marginTop: "3rem" }}>Achievements <Divider /></h2>
-      <div style={styles.achGrid}>
-        {data.achievements.map((a, i) => (
-          <div 
-            key={i} 
-            style={styles.achCard}
-            onMouseEnter={(e) => { 
-              e.currentTarget.style.borderColor = "rgba(167, 139, 250, 0.5)"; 
-              e.currentTarget.style.boxShadow = "0 8px 24px rgba(167, 139, 250, 0.15)";
-            }}
-            onMouseLeave={(e) => { 
-              e.currentTarget.style.borderColor = "rgba(167, 139, 250, 0.2)"; 
-              e.currentTarget.style.boxShadow = "none";
-            }}
-          >
-            <span style={{ color: "#06b6d4", fontSize: 20 }}>◆</span>
-            <p style={styles.achText}>{a}</p>
-          </div>
-        ))}
+      <div style={{ marginTop: "3rem" }}>
+        <SectionHeading n="04.2" label="Achievements" />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 14 }}>
+          {data.achievements.map((a, i) => (
+            <div key={i} style={{ background: COLORS.surface, border: `1px solid ${COLORS.mintBorder}`, borderRadius: 12, padding: "1.1rem 1.3rem", display: "flex", gap: 12, alignItems: "flex-start" }}>
+              <span style={{ color: COLORS.mint, fontSize: 14, fontFamily: "'JetBrains Mono', monospace" }}>◆</span>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13.5, color: COLORS.textDim, lineHeight: 1.7 }}>{a}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <h2 style={{ ...styles.sectionTitle, marginTop: "3rem" }}>Education <Divider /></h2>
-      {data.education.map((e) => (
-        <div 
-          key={e.degree} 
-          style={styles.eduItem}
-          onMouseEnter={(e) => { 
-            e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.5)"; 
-            e.currentTarget.style.boxShadow = "0 8px 24px rgba(6, 182, 212, 0.15)";
-          }}
-          onMouseLeave={(e) => { 
-            e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.2)"; 
-            e.currentTarget.style.boxShadow = "none";
-          }}
-        >
-          <div>
-            <p style={{ fontSize: 15, fontWeight: 700, color: "#f8fafc" }}>{e.degree}</p>
-            <p style={{ fontSize: 13, color: "#94a3b8", marginTop: 4 }}>{e.institute}</p>
-          </div>
-          <span style={{ fontSize: 12, color: "#06b6d4", background: "rgba(6, 182, 212, 0.15)", borderRadius: 20, padding: "4px 12px", whiteSpace: "nowrap", border: "1px solid rgba(6, 182, 212, 0.3)" }}>{e.year}</span>
-        </div>
-      ))}
+      <div style={{ marginTop: "3rem" }}>
+        <SectionHeading n="04.3" label="Education" />
+        {data.education.map((e) => (
+          <LogEntry key={e.degree} hash={e.hash} title={e.degree} meta={e.institute} badge={e.year} />
+        ))}
+      </div>
     </div>
   );
 }
 
 function Contact() {
   const contacts = [
-    { label: "Email", value: data.email, href: `mailto:${data.email}` },
-    { label: "Phone", value: data.phone, href: `tel:${data.phone}` },
-    { label: "LinkedIn", value: "amjad-khan-209363320", href: data.linkedin },
-    { label: "GitHub", value: "Amjadkhan9756", href: data.github },
-    { label: "LeetCode", value: "amjad_khan", href: data.leetcode },
+    { label: "email", value: data.email, href: `mailto:${data.email}` },
+    { label: "phone", value: data.phone, href: `tel:${data.phone}` },
+    { label: "linkedin", value: "amjad-khan-209363320", href: data.linkedin },
+    { label: "github", value: "Amjadkhan9756", href: data.github },
+    { label: "leetcode", value: "amjad_khan", href: data.leetcode },
   ];
   return (
-    <div style={styles.section} id="contact">
-      <h2 style={styles.sectionTitle}>Contact <Divider /></h2>
-      <div style={styles.contactGrid}>
+    <div style={{ maxWidth: 1180, margin: "0 auto", padding: "3.5rem 2rem" }}>
+      <SectionHeading n="05" label="Contact" />
+      <div
+        style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 14,
+          background: COLORS.surface,
+          border: `1px solid ${COLORS.border}`,
+          borderRadius: 12,
+          padding: "1.4rem 1.8rem",
+          maxWidth: 620,
+        }}
+      >
         {contacts.map((c) => (
-          <a 
-            key={c.label} 
-            href={c.href} 
-            target="_blank" 
-            rel="noreferrer" 
-            style={{ ...styles.contactItem, textDecoration: "none" }}
-            onMouseEnter={(e) => { 
-              e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.5)"; 
-              e.currentTarget.style.boxShadow = "0 8px 24px rgba(6, 182, 212, 0.15)";
-              e.currentTarget.style.transform = "translateY(-4px)";
-            }}
-            onMouseLeave={(e) => { 
-              e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.2)"; 
-              e.currentTarget.style.boxShadow = "none";
-              e.currentTarget.style.transform = "translateY(0)";
-            }}
+          <a
+            key={c.label}
+            href={c.href}
+            target="_blank"
+            rel="noreferrer"
+            style={{ display: "flex", gap: 10, padding: "8px 0", color: COLORS.textDim, textDecoration: "none", borderBottom: `1px solid ${COLORS.border}` }}
           >
-            <div style={{ width: 44, height: 44, borderRadius: "50%", background: "linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(167, 139, 250, 0.2))", display: "flex", alignItems: "center", justifyContent: "center", color: "#06b6d4", fontSize: 18, flexShrink: 0, border: "1px solid rgba(6, 182, 212, 0.3)" }}>✉</div>
-            <div>
-              <p style={{ fontSize: 12, color: "#94a3b8", marginBottom: 4 }}>{c.label}</p>
-              <p style={{ fontSize: 14, fontWeight: 500, color: "#f8fafc", wordBreak: "break-all" }}>{c.value}</p>
-            </div>
+            <span style={{ color: COLORS.mint }}>$</span>
+            <span style={{ color: COLORS.accent }}>open</span>
+            <span>--{c.label}</span>
+            <span style={{ color: COLORS.text, marginLeft: "auto", wordBreak: "break-all" }}>{c.value}</span>
           </a>
         ))}
       </div>
@@ -468,13 +718,27 @@ function Contact() {
 
 const SECTIONS = { Home, About, Skills, Projects, Experience, Contact };
 
+/* ----------------------------------- app ------------------------------------ */
+
 export default function Portfolio() {
+  useGoogleFonts();
   const [active, setActive] = useState("Home");
   const ActiveSection = SECTIONS[active];
 
   return (
-    <div style={styles.page}>
-      <Navbar active={active} onNav={setActive} />
+    <div style={{ fontFamily: "'Inter', sans-serif", background: COLORS.bg, minHeight: "100vh", color: COLORS.text }}>
+      <style>{`
+        .tilt-card { transition: transform 0.15s ease-out, border-color 0.2s ease; will-change: transform; }
+        .tilt-card:hover { border-color: ${COLORS.accentBorder} !important; }
+        @media (max-width: 860px) {
+          .hero-grid { grid-template-columns: 1fr !important; }
+        }
+        a:focus-visible, button:focus-visible { outline: 2px solid ${COLORS.accent}; outline-offset: 2px; }
+        @media (prefers-reduced-motion: reduce) {
+          .tilt-card { transition: none !important; }
+        }
+      `}</style>
+      <IdeChrome active={active} onNav={setActive} />
       {active === "Home" ? (
         <>
           <Home onNav={setActive} />
@@ -487,7 +751,18 @@ export default function Portfolio() {
       ) : (
         <ActiveSection onNav={setActive} />
       )}
-      <footer style={styles.footer}>Designed & built by Amjad Khan · 2025</footer>
+      <footer
+        style={{
+          textAlign: "center",
+          padding: "2.4rem",
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 12.5,
+          color: COLORS.textFaint,
+          borderTop: `1px solid ${COLORS.border}`,
+        }}
+      >
+        // built by {data.name} · 2025
+      </footer>
     </div>
   );
 }
