@@ -641,7 +641,7 @@ function Experience() {
             <h3 className="journey-heading">Education</h3>
             <article className="journey-card education-card">
               <div className="journey-marker journey-marker-blue" />
-              <div className="journey-meta"><span>BAREILLY, INDIA</span><span>2023 — 2027</span></div>
+              <div className="journey-meta"><span>BAREILLY, INDIA</span><span>2022 — 2027</span></div>
               <h4>B.Tech, Computer Science &amp; Engineering</h4>
               <p className="journey-company">Shri Ram Murti Smarak College of Engineering &amp; Technology</p>
               <span className="education-badge">EXPECTED GRADUATION · 2027</span>
