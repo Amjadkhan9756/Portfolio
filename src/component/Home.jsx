@@ -420,7 +420,7 @@ function Hero() {
           <span className="availability-dot" />
           OPEN TO OPPORTUNITIES
         </div>
-        <p className="hero-intro">Hi, I’m Amjad Khan</p>
+        <p className="hero-intro">Hi, I’m Amjad Khan(9756859054)</p>
         <h1>
           I build things<br />
           <span>for the web.</span>
