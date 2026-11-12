@@ -5,15 +5,25 @@ const RESUME = "/Amjad_Khan.pdf";
 
 const links = {
   email: "mailto:amjadkhann.tech@gmail.com",
+  phone: "tel:9756859054",
   linkedin: "https://linkedin.com/in/amjad-khan-209363320",
   github: "https://github.com/Amjadkhan9756",
   leetcode: "https://leetcode.com/u/amjad_khan",
 };
 
 const skills = [
-  { title: "Frontend", items: ["React.js", "Next.js", "TypeScript", "Redux", "Tailwind CSS"] },
-  { title: "Backend", items: ["Node.js", "Express.js", "REST APIs", "MongoDB"] },
-  { title: "Tools & cloud", items: ["Git", "Docker", "AWS", "CI/CD", "Java"] },
+  { title: "Languages", items: ["JavaScript", "TypeScript", "Java"] },
+  {
+    title: "Frontend",
+    items: ["React.js", "Next.js", "Redux Toolkit", "HTML5", "CSS3", "Tailwind CSS", "Material UI"],
+  },
+  {
+    title: "Backend",
+    items: ["Node.js", "Express.js", "REST APIs", "JWT Authentication and Authorization"],
+  },
+  { title: "Databases", items: ["MongoDB", "Mongoose", "PostgreSQL"] },
+  { title: "Tools", items: ["Git", "GitHub", "GitHub Actions", "Docker", "CI/CD"] },
+  { title: "Problem Solving", items: ["Data Structures and Algorithms (DSA)"] },
 ];
 
 const technologies = [
@@ -509,7 +519,7 @@ function Skills() {
             <article className="skill-card" key={group.title}>
               <div className="skill-card-top">
                 <span className="skill-number">0{index + 1}</span>
-                <span className="skill-card-accent" aria-hidden="true">{["◈", "⌘", "✳"][index]}</span>
+                <span className="skill-card-accent" aria-hidden="true">{["◈", "⌘", "✳", "▤", "⌘", "↗"][index]}</span>
               </div>
               <h3>{group.title}</h3>
               <div className="skill-tags">
@@ -535,13 +545,13 @@ function Projects() {
         <div className="project-preview">
           <div className="preview-topbar">
             <span /><span /><span />
-            <span className="preview-address">proconnect · social / network</span>
+            <span className="preview-address">postBlogs · social / blog</span>
           </div>
           <div className="preview-content">
-            <div className="preview-rail"><span>in.</span><span>◎</span><span>▤</span><span>⌘</span></div>
+            <div className="preview-rail"><span>p.</span><span>◎</span><span>▤</span><span>⌘</span></div>
             <div className="preview-feed">
-              <div className="preview-greeting">YOUR PROFESSIONAL COMMUNITY</div>
-              <div className="preview-headline">A place to build<br /><span>what’s next.</span></div>
+              <div className="preview-greeting">YOUR SOCIAL BLOG COMMUNITY</div>
+              <div className="preview-headline">A place to share<br /><span>what’s next.</span></div>
               <div className="preview-subline" />
               <div className="preview-subline preview-subline-short" />
               <div className="preview-post">
@@ -558,7 +568,7 @@ function Projects() {
             <div className="preview-profile">
               <div className="profile-cover" />
               <div className="profile-avatar">AK</div>
-              <span className="profile-name">Your next connection.</span>
+              <span className="profile-name">Stories worth sharing.</span>
               <span className="profile-line" /><span className="profile-line profile-line-short" />
               <span className="profile-action" />
             </div>
@@ -567,17 +577,16 @@ function Projects() {
         </div>
         <div className="project-details">
           <div className="project-kicker"><span>FEATURED PROJECT</span><span>01 — 01</span></div>
-          <h3>ProConnect</h3>
-          <p className="project-tagline">Professional connections, with a personal touch.</p>
+          <h3>postBlogs – Social Blog Platform</h3>
+          <p className="project-tagline">A space to share ideas and connect through stories.</p>
           <p className="project-description">
-            A LinkedIn-inspired social platform for sharing ideas, growing professional
-            communities, and making meaningful connections. Build a rich profile, share
-            a post, and connect with others—all in one place.
+            A social blog platform for publishing posts, sharing media, and building a
+            community. Create a profile, join conversations, and connect with others.
           </p>
           <div className="project-features">
-            <span>Rich member profiles</span>
-            <span>Posts &amp; media uploads</span>
-            <span>Connection requests</span>
+            <span>Member profiles</span>
+            <span>Blog posts &amp; media</span>
+            <span>Social connections</span>
             <span>Secure authentication</span>
           </div>
           <div className="project-tech">
@@ -585,7 +594,7 @@ function Projects() {
           </div>
           <a
             className="button button-primary project-link"
-            href="https://proconnect-sandy.vercel.app/"
+            href="https://post-blogs-gwgtgh5iw-amjadkhan9756s-projects.vercel.app/"
             target="_blank"
             rel="noreferrer"
           >
@@ -649,8 +658,11 @@ function Contact() {
           Say hello <ArrowIcon diagonal />
         </a>
         <div className="contact-bottom">
-          <a href={links.email}>amjadkhann.tech@gmail.com</a>
-          <span>BAREILLY, INDIA · OPEN TO REMOTE</span>
+          <div className="contact-details">
+            <a href={links.email}>amjadkhann.tech@gmail.com</a>
+            <a href={links.phone}>{links.phone.replace("tel:", "")}</a>
+          </div>
+          <span>BAREILLY, INDIA · OPEN TO JOBS</span>
         </div>
       </div>
     </section>
