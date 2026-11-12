@@ -594,7 +594,7 @@ function Projects() {
           </div>
           <a
             className="button button-primary project-link"
-            href="https://post-blogs-gwgtgh5iw-amjadkhan9756s-projects.vercel.app/"
+            href="https://post-blogs-ten.vercel.app/login/"
             target="_blank"
             rel="noreferrer"
           >
