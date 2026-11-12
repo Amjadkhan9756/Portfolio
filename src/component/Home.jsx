@@ -626,7 +626,7 @@ function Experience() {
                 <li>Collaborated with team members using Git and GitHub for version control and code reviews.</li>
               </ul>
             </article>
-            <article className="journey-card">
+            {/* <article className="journey-card">
               <div className="journey-marker" />
               <div className="journey-meta"><span>REMOTE · INDIA</span><span>AUG — SEP 2023</span></div>
               <h4>Web Development Intern</h4>
@@ -635,7 +635,7 @@ function Experience() {
                 <li>Built responsive web modules using React and Node.js, improving rendering speed by 25%.</li>
                 <li>Created 10+ reusable UI components and scalable backend API routes.</li>
               </ul>
-            </article>
+            </article> */}
           </div>
           <div>
             <h3 className="journey-heading">Education</h3>
