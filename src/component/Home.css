@@ -1189,6 +1189,19 @@
   border: 1px solid #eae8f0;
   border-radius: 9px;
   background: rgb(255 255 255 / 72%);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.certification-note:hover {
+  border-color: #d7d0f4;
+  background: #fff;
+}
+
+.certification-note:focus-visible {
+  outline: 2px solid #7965dd;
+  outline-offset: 3px;
 }
 
 .certification-mark {

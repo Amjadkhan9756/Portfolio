@@ -616,6 +616,18 @@ function Experience() {
             <h3 className="journey-heading">Experience</h3>
             <article className="journey-card">
               <div className="journey-marker" />
+              <div className="journey-meta"><span>BAREILLY · UTTAR PRADESH</span><span>JUN 03 — AUG 05, 2026</span></div>
+              <h4>Full Stack Intern</h4>
+              <p className="journey-company">Vitsoft Solutions Pvt. Ltd.</p>
+              <ul>
+                <li>Developed features for MERN stack web applications as part of an Agile team.</li>
+                <li>Built responsive React.js interfaces and integrated REST APIs to fetch, display, and update server data.</li>
+                <li>Implemented Express.js and MongoDB CRUD services, user authentication, and secured API endpoints.</li>
+                <li>Collaborated with team members using Git and GitHub for version control and code reviews.</li>
+              </ul>
+            </article>
+            <article className="journey-card">
+              <div className="journey-marker" />
               <div className="journey-meta"><span>REMOTE · INDIA</span><span>AUG — SEP 2023</span></div>
               <h4>Web Development Intern</h4>
               <p className="journey-company">Academor</p>
@@ -634,10 +646,19 @@ function Experience() {
               <p className="journey-company">Shri Ram Murti Smarak College of Engineering &amp; Technology</p>
               <span className="education-badge">EXPECTED GRADUATION · 2027</span>
             </article>
-            <div className="certification-note">
+            <a
+              className="certification-note"
+              href="/Vitsoft_Internship_Certificate.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
               <span className="certification-mark">✳</span>
-              <p><strong>MERN Stack Development</strong><br />Additional full-stack training with Academor.</p>
-            </div>
+              <p>
+                <strong>Full Stack Developer Internship Certificate</strong>
+                <br />Vitsoft Solutions Pvt. Ltd. · Issued 5 August 2026
+                <br />Signed by Babita Sharma, HR Head · View certificate
+              </p>
+            </a>
           </div>
         </div>
       </div>
